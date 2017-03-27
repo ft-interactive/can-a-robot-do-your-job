@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import Search from './components/search';
+
 class App extends Component {
-  render () {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+    };
+  }
+
+  render() {
     return (
       <div>
-        <p>This is a test</p>
+        <div id="preset-button-container">
+          <span>Popular: </span>
+          <button className="o-buttons">Lawyer</button>
+          <button className="o-buttons">Investment Banker</button>
+          <button className="o-buttons">Clergy</button>
+          <button className="o-buttons">Show me a random occupation</button>
+        </div>
+        <Search data={this.state.data} />
       </div>
     );
   }

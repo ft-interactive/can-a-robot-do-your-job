@@ -99,3 +99,14 @@ $share-button-size: 38px;
 .article-head .o-share--vertical .o-share__action {
   box-sizing: content-box !important;
 }
+
+#main-container {
+  background: #fdf8f2;
+  box-shadow: 1px 1px 1px 1px rgba(176,176,176,0.5);
+  padding: 20px 26px;
+  margin-bottom: 20px;
+
+  h2 {
+    margin-top: 0;
+  }
+}
