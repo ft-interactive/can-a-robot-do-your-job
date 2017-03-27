@@ -12,7 +12,7 @@ class Search extends Component {
 
     return (
       <div id="search-container">
-        <input type="text" placeholder="Enter your profession here..." />
+        <input type="text" placeholder="Enter your occupation here..." />
 
         <div id="category-container">
           {dropdownIndustry}
