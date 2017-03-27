@@ -11,10 +11,13 @@ class Search extends Component {
     </select>);
 
     return (
-      <div>
-        <input type="text" />
-        {dropdownIndustry}
-        {dropdownOccupation}
+      <div id="search-container">
+        <input type="text" placeholder="Enter your profession here..." />
+
+        <div id="category-container">
+          {dropdownIndustry}
+          {dropdownOccupation}
+        </div>
       </div>
     );
   }

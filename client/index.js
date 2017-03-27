@@ -16,7 +16,7 @@ class App extends Component {
     return (
       <div>
         <div id="preset-button-container">
-          <span>Popular: </span>
+          <span>Popular occupations: </span>
           <button className="o-buttons">Lawyer</button>
           <button className="o-buttons">Investment Banker</button>
           <button className="o-buttons">Clergy</button>

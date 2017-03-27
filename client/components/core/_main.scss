@@ -109,4 +109,12 @@ $share-button-size: 38px;
   h2 {
     margin-top: 0;
   }
+
+  #preset-button-container {
+    margin-bottom: 1em;
+
+    button {
+      margin-right: 5px;
+    }
+  }
 }
