@@ -1,4 +1,4 @@
-# [jobs-technology-work](https://ig.ft.com/jobs-technology-work)
+# [can-a-robot-do-your-job](https://ig.ft.com/can-a-robot-do-your-job)
 
 > Calculator to show how much of your job could be done by a robot
 
@@ -33,8 +33,8 @@ This software is published by the Financial Times under the [MIT licence](http:/
 Please note the MIT licence includes only the software, and does not cover any FT content made available using the software, which is copyright &copy; The Financial Times Limited, all rights reserved. For more information about re-publishing FT content, please contact our [syndication department](http://syndication.ft.com/).
 
 <!-- badge URLs -->
-[circle-url]: https://circleci.com/gh/ft-interactive/jobs-technology-work
-[circle-image]: https://circleci.com/gh/ft-interactive/jobs-technology-work/tree/master.svg?style=shield
+[circle-url]: https://circleci.com/gh/ft-interactive/can-a-robot-do-your-job
+[circle-image]: https://circleci.com/gh/ft-interactive/can-a-robot-do-your-job/tree/master.svg?style=shield
 
-[devdeps-url]: https://david-dm.org/ft-interactive/jobs-technology-work#info=devDependencies
-[devdeps-image]: https://img.shields.io/david/dev/ft-interactive/jobs-technology-work.svg?style=flat-square
+[devdeps-url]: https://david-dm.org/ft-interactive/can-a-robot-do-your-job#info=devDependencies
+[devdeps-image]: https://img.shields.io/david/dev/ft-interactive/can-a-robot-do-your-job.svg?style=flat-square
