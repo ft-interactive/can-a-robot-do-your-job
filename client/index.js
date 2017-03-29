@@ -16,20 +16,26 @@ class App extends Component {
       industries: [],
       chosenJobId: null,
       chosenJobName: null,
-      jobActivities: [],
-      numTotalJobActivities: null,
-      numRobotJobActivities: null,
+      allOccupationsResults: {},
+      jobsResults: {},
+      personalizedResults: {},
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
+    this.getActivityResultNumbers = this.getActivityResultNumbers.bind(this);
   }
 
   componentDidMount() {
     axios
-      .get('./data/data_sample.csv')
+      .get('./data/data.csv')
       .then((response) => {
+        const data = d3.csvParse(response.data);
+        const allOccupationsActivities = _.groupBy(data, 'DWA Title');
+        const allOccupationsResults = this.getActivityResultNumbers(allOccupationsActivities);
+
         this.setState({
-          data: d3.csvParse(response.data),
+          data,
+          allOccupationsResults,
         });
       });
 
@@ -42,13 +48,7 @@ class App extends Component {
       });
   }
 
-  setChosenJob(jobId, jobName) {
-    console.log('chose job', jobId, jobName);
-
-    // get total number of job activities given jobId
-    const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
-    const jobActivities = _.groupBy(this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe), 'DWA Title');
-
+  getActivityResultNumbers(jobActivities) {
     const robotJobActivities = _.filter(jobActivities, (job) => {
       if (job.length > 1) {
         return job.reduce((a, b) => {
@@ -57,14 +57,29 @@ class App extends Component {
       }
       return job[0]['Technically automatable flag'] === 'TRUE';
     });
-    const numRobotJobActivities = robotJobActivities.length;
+
+    return {
+      yes: robotJobActivities.length,
+      no: 30,
+      sometimes: 40,
+      jobActivities,
+      numJobActivities: Object.keys(jobActivities).length,
+    };
+  }
+
+  setChosenJob(jobId, jobName) {
+    console.log('chose job', jobId, jobName);
+
+    // get total number of job activities given jobId
+    const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
+    const jobActivities = _.groupBy(this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe), 'DWA Title');
+
+    const jobsResults = this.getActivityResultNumbers(jobActivities);
 
     this.setState({
       chosenJobId: jobId,
       chosenJobName: jobName,
-      numRobotJobActivities,
-      numTotalJobActivities: Object.keys(jobActivities).length,
-      jobActivities,
+      jobsResults,
     });
   }
 
@@ -72,7 +87,7 @@ class App extends Component {
     const resultOne = () => {
       if (this.state.chosenJobId) {
         return (<div id="resultOne">
-          For {this.state.chosenJobName}, {this.state.numRobotJobActivities} of {this.state.numTotalJobActivities} tasks could be done by a robot.
+          For {this.state.chosenJobName}, {this.state.jobsResults.yes} of {this.state.jobsResults.numJobActivities} tasks could be done by a robot.
         </div>);
       }
       return null;
