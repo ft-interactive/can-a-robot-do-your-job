@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   getActivityResultNumbers(jobActivities) {
-    const robotJobActivities = _.filter(jobActivities, (job) => {
+    const robotActivities = _.filter(jobActivities, (job) => {
       if (job.length > 1) {
         return job.reduce((a, b) => {
           return a['Technically automatable flag'] === 'TRUE' && b['Technically automatable flag'] === 'TRUE';
@@ -58,10 +58,19 @@ class App extends Component {
       return job[0]['Technically automatable flag'] === 'TRUE';
     });
 
+    const notRobotActivities = _.filter(jobActivities, (job) => {
+      if (job.length > 1) {
+        return job.reduce((a, b) => {
+          return !(a['Technically automatable flag'] === 'FALSE' && b['Technically automatable flag'] === 'FALSE');
+        });
+      }
+      return job[0]['Technically automatable flag'] === 'FALSE';
+    });
+
     return {
-      yes: robotJobActivities.length,
-      no: 30,
-      sometimes: 40,
+      yes: robotActivities.length,
+      no: notRobotActivities.length,
+      sometimes: Object.keys(jobActivities).length - robotActivities.length - notRobotActivities.length,
       jobActivities,
       numJobActivities: Object.keys(jobActivities).length,
     };
@@ -84,6 +93,12 @@ class App extends Component {
   }
 
   render() {
+    const proportionalBarChartData = {
+      allOccupationsResults: this.state.allOccupationsResults,
+      jobsResults: this.state.jobsResults,
+      personalizedResults: this.state.personalizedResults,
+    };
+
     const resultOne = () => {
       if (this.state.chosenJobId) {
         return (<div id="resultOne">
@@ -97,7 +112,7 @@ class App extends Component {
       <div>
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
-        {/* <ProportionalStackedBarChart data={[]} /> */}
+        <ProportionalStackedBarChart data={proportionalBarChartData} />
       </div>
     );
   }
