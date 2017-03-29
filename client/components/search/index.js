@@ -52,14 +52,22 @@ class Search extends Component {
           <button className="o-buttons">Show me a random occupation</button>
         </div>
         <div id="category-container">
-          <select onChange={event => this.getJobsList(event.target.value)}>
-            <option>Pick an industry</option>
-            {dropdownIndustry}
-          </select>
-          <select disabled={dropdownOccupation.length <= 0}>
-            <option>Pick a job</option>
-            {dropdownOccupation}
-          </select>
+          <div className="category-dropdowns">
+            <div className="step-number">1</div>
+            <label htmlFor="dropdownIndustry">Pick an industry</label>
+            <select onChange={event => this.getJobsList(event.target.value)} id="dropdownIndustry">
+              <option>Pick an industry</option>
+              {dropdownIndustry}
+            </select>
+          </div>
+          <div className="category-dropdowns">
+            <div className="step-number">2</div>
+            <label htmlFor="dropdownOccupation">Pick a job</label>
+            <select disabled={dropdownOccupation.length <= 0} id="dropdownOccupation">
+              <option>Pick a job</option>
+              {dropdownOccupation}
+            </select>
+          </div>
         </div>
       </div>
     );

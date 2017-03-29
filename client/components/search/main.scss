@@ -5,10 +5,21 @@
     width: 100%;
     margin-top: 1em;
 
-    select {
-      display: block;
+    .category-dropdowns {
       margin-bottom: 1em;
+    }
+
+    label {
+      display: none;
+    }
+
+    select {
+      display: inline-block;
+      vertical-align: bottom;
+      margin-bottom: 0.5em;
       min-width: 200px;
+      font-size: 1em;
+      max-width: 300px;
     }
   }
 }

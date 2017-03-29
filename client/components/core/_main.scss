@@ -140,4 +140,19 @@ $share-button-size: 38px;
       margin-right: 5px;
     }
   }
+
+  .step-number {
+    width: 36px;
+    height: 36px;
+    line-height: 30px;
+    border-radius: 50%;
+    vertical-align: bottom;
+    background: getColor('blue-tint2');
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 2em;
+    margin-right: 10px;
+  }
 }
