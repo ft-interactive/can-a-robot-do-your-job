@@ -12,6 +12,7 @@ class Search extends Component {
     };
 
     this.getJobsList = this.getJobsList.bind(this);
+    this.setJob = this.setJob.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,13 +34,17 @@ class Search extends Component {
       });
   }
 
+  setJob(minorGroupId) {
+    this.props.setChosenJobFunc(minorGroupId);
+  }
+
   render() {
     const dropdownIndustry = this.state.industries.map((industry) => {
       return (<option value={industry.id.split('-')[0]}>{industry.major_group_title}</option>)
     });
 
-    const dropdownOccupation = this.state.jobs.map((industry) => {
-      return (<option>{industry.minor_group_title}</option>)
+    const dropdownOccupation = this.state.jobs.map((job) => {
+      return (<option value={job.id}>{job.minor_group_title}</option>)
     });
 
     return (
@@ -63,7 +68,7 @@ class Search extends Component {
           <div className="category-dropdowns">
             <div className="step-number">2</div>
             <label htmlFor="dropdownOccupation">Pick a job</label>
-            <select disabled={dropdownOccupation.length <= 0} id="dropdownOccupation">
+            <select disabled={dropdownOccupation.length <= 0} onChange={event => this.setJob(event.target.value)} id="dropdownOccupation">
               <option>Pick a job</option>
               {dropdownOccupation}
             </select>
@@ -76,6 +81,7 @@ class Search extends Component {
 
 Search.propTypes = {
   industries: React.PropTypes.array,
+  setChosenJobFunc: React.PropTypes.func,
 };
 
 export default Search;

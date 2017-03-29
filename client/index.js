@@ -13,7 +13,10 @@ class App extends Component {
       data: [],
       industries: [],
       jobs: [],
+      chosenJobId: null,
     };
+
+    this.setChosenJob = this.setChosenJob.bind(this);
   }
 
   componentDidMount() {
@@ -34,10 +37,27 @@ class App extends Component {
       });
   }
 
+  setChosenJob(jobId) {
+    console.log('chose job', jobId);
+    this.setState({
+      chosenJobId: jobId,
+    });
+  }
+
   render() {
+    const resultOne = () => {
+      if (this.state.chosenJobId) {
+        return (<div id="resultOne">
+          For {this.state.chosenJobId}, x of x tasks could be done by a robot.
+        </div>);
+      }
+      return null;
+    };
+
     return (
       <div>
-        <Search industries={this.state.industries} />
+        <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
+        {resultOne()}
       </div>
     );
   }
