@@ -35,7 +35,9 @@ class Search extends Component {
   }
 
   setJob(minorGroupId) {
-    this.props.setChosenJobFunc(minorGroupId);
+    const jobName = this.state.jobs.filter(job => job.id === minorGroupId)[0].minor_group_title;
+
+    this.props.setChosenJobFunc(minorGroupId, jobName);
   }
 
   render() {

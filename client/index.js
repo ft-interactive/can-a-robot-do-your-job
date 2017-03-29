@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as d3 from 'd3';
 
 import Search from './components/search';
+import ProportionalStackedBarChart from './components/proportional-stacked-bar';
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,9 @@ class App extends Component {
       industries: [],
       jobs: [],
       chosenJobId: null,
+      chosenJobName: null,
+      numTotalJobActivities: null,
+      numRobotJobActivities: null,
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -37,10 +41,14 @@ class App extends Component {
       });
   }
 
-  setChosenJob(jobId) {
-    console.log('chose job', jobId);
+  setChosenJob(jobId, jobName) {
+    console.log('chose job', jobId, jobName);
+
     this.setState({
       chosenJobId: jobId,
+      chosenJobName: jobName,
+      numRobotJobActivities: 100,
+      numTotalJobActivities: 302,
     });
   }
 
@@ -48,7 +56,7 @@ class App extends Component {
     const resultOne = () => {
       if (this.state.chosenJobId) {
         return (<div id="resultOne">
-          For {this.state.chosenJobId}, x of x tasks could be done by a robot.
+          For {this.state.chosenJobName}, {this.state.numRobotJobActivities} of {this.state.numTotalJobActivities} tasks could be done by a robot.
         </div>);
       }
       return null;
@@ -58,6 +66,7 @@ class App extends Component {
       <div>
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
+        <ProportionalStackedBarChart data={[]} />
       </div>
     );
   }
