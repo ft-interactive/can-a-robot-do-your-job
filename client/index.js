@@ -13,9 +13,9 @@ class App extends Component {
     this.state = {
       data: [],
       industries: [],
-      jobs: [],
       chosenJobId: null,
       chosenJobName: null,
+      jobActivities: [],
       numTotalJobActivities: null,
       numRobotJobActivities: null,
     };
@@ -44,11 +44,16 @@ class App extends Component {
   setChosenJob(jobId, jobName) {
     console.log('chose job', jobId, jobName);
 
+    // get total number of job activities given jobId
+    const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
+    const jobActivities = this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe);
+
     this.setState({
       chosenJobId: jobId,
       chosenJobName: jobName,
-      numRobotJobActivities: 100,
-      numTotalJobActivities: 302,
+      numRobotJobActivities: jobActivities.filter(job => job['Technically automatable flag'] === 'TRUE').length,
+      numTotalJobActivities: jobActivities.length,
+      jobActivities,
     });
   }
 
@@ -66,7 +71,7 @@ class App extends Component {
       <div>
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
-        <ProportionalStackedBarChart data={[]} />
+        {/* <ProportionalStackedBarChart data={[]} /> */}
       </div>
     );
   }
