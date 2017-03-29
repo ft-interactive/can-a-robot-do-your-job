@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import * as d3 from 'd3';
+import * as _ from 'lodash';
 
 import Search from './components/search';
 import ProportionalStackedBarChart from './components/proportional-stacked-bar';
@@ -46,13 +47,23 @@ class App extends Component {
 
     // get total number of job activities given jobId
     const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
-    const jobActivities = this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe);
+    const jobActivities = _.groupBy(this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe), 'DWA Title');
+
+    const robotJobActivities = _.filter(jobActivities, (job) => {
+      if (job.length > 1) {
+        return job.reduce((a, b) => {
+          return a['Technically automatable flag'] === 'TRUE' && b['Technically automatable flag'] === 'TRUE';
+        });
+      }
+      return job[0]['Technically automatable flag'] === 'TRUE';
+    });
+    const numRobotJobActivities = robotJobActivities.length;
 
     this.setState({
       chosenJobId: jobId,
       chosenJobName: jobName,
-      numRobotJobActivities: jobActivities.filter(job => job['Technically automatable flag'] === 'TRUE').length,
-      numTotalJobActivities: jobActivities.length,
+      numRobotJobActivities,
+      numTotalJobActivities: Object.keys(jobActivities).length,
       jobActivities,
     });
   }
