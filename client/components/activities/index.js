@@ -5,25 +5,38 @@ class Activities extends Component {
     super(props);
 
     this.state = {
+      activities: {},
     };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      industries: nextProps.industries,
+      activities: nextProps.activities,
     });
   }
 
   render() {
+    const activities = Object.keys(this.state.activities).map((activityName, i) => {
+      return (<fieldset className="o-forms">
+        <input type="checkbox" name={`checkbox${i}`} value="1" className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.props.updatePersonalActivitiesFunc(event.target)} />
+        <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activityName}</p></label>
+      </fieldset>);
+    });
+
     return (
       <div id="activities-container">
+        <div className="step-number o-forms__prefix">3</div>
         <h2 className="o-typography-heading2">How much of my job could a robot do?</h2>
+        <p id="activities-container__instructions">Select all activities that apply.</p>
+        {activities}
       </div>
     );
   }
 }
 
 Activities.propTypes = {
+  activities: React.PropTypes.object,
+  updatePersonalActivitiesFunc: React.PropTypes.func,
 };
 
 export default Activities;

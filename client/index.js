@@ -20,6 +20,7 @@ class App extends Component {
       allOccupationsResults: {},
       jobsResults: {},
       personalizedResults: {},
+      jobActivities: {},
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -90,7 +91,12 @@ class App extends Component {
       chosenJobId: jobId,
       chosenJobName: jobName,
       jobsResults,
+      jobActivities,
     });
+  }
+
+  updatePersonalActivities(node) {
+    console.log('this changed', node);
   }
 
   render() {
@@ -120,7 +126,7 @@ class App extends Component {
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
         <ProportionalStackedBarChart data={proportionalBarChartData} />
-        <Activities />
+        <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
   }
