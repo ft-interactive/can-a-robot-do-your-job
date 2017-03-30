@@ -118,26 +118,26 @@ class ProportionalStackedBarChart extends Component {
         .attr('class', 'rect')
         .attr('x', 0)
         .attr('y', d => yScale(d.label) / 4)
-        .attr('width', d => xScale(d.data.yes / d.data.numJobActivities))
+        .attr('width', d => xScale(d.data.yes / d.data.numJobActivities) || 0)
         .attr('height', yScale.bandwidth() / 2)
         .attr('fill', '#26747a');
 
       const noRect = bar.append('rect')
         .attr('class', 'rect')
-        .attr('x', d => xScale(d.data.yes / d.data.numJobActivities))
+        .attr('x', d => xScale(d.data.yes / d.data.numJobActivities) || 0)
         .attr('y', d => yScale(d.label) / 4)
         .attr('width', (d) => {
-          return xScale(d.data.no / d.data.numJobActivities);
+          return xScale(d.data.no / d.data.numJobActivities) || 0;
         })
         .attr('height', yScale.bandwidth() / 2)
         .attr('fill', '#2bbbbf');
 
       const sometimesRect = bar.append('rect')
         .attr('class', 'rect')
-        .attr('x', d => xScale((d.data.yes + d.data.no) / d.data.numJobActivities))
+        .attr('x', d => xScale((d.data.yes + d.data.no) / d.data.numJobActivities) || 0)
         .attr('y', d => yScale(d.label) / 4)
         .attr('width', (d) => {
-          return xScale(d.data.sometimes / d.data.numJobActivities);
+          return xScale(d.data.sometimes / d.data.numJobActivities) || 0;
         })
         .attr('height', yScale.bandwidth() / 2)
         .attr('fill', '#eed485');
