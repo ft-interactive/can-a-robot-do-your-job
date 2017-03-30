@@ -129,6 +129,10 @@ $share-button-size: 38px;
   padding: 20px 26px;
   margin-bottom: 20px;
 
+  #top_illo {
+    text-align: center;
+  }
+
   h2 {
     margin-top: 0;
   }
@@ -140,6 +144,7 @@ $share-button-size: 38px;
       margin-right: 5px;
     }
   }
+
 
   .step-number {
     width: 36px;
@@ -169,11 +174,17 @@ $share-button-size: 38px;
   .o-typography-subhead {
     font-size:1em;
   }
+  .o-typography-heading2 {
+    font-size:1.2em;
+  }
   #resultOne {
     text-align: center;
   }
   #resultOne__bigNumber {
     font-size:60px;
-    font-style: bold;
+    font-weight:500;
+  }
+  .resultOne__methodology {
+    font-size:12px;
   }
 }
