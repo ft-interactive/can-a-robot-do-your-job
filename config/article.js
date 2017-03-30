@@ -42,7 +42,7 @@ export default () => ({ // eslint-disable-line
   ],
 
   // Appears in the HTML <title>
-  title: 'What parts of your work can be automated? - FT',
+  title: 'What parts of your work can be automated?',
 
   // meta data
   description: 'Interactive calculator by the Financial Times that shows how much of your job can technically be done by a robot',
