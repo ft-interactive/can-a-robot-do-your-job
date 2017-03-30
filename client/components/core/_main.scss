@@ -144,7 +144,7 @@ $share-button-size: 38px;
   .step-number {
     width: 36px;
     height: 36px;
-    line-height: 34px;
+    line-height: 14px;
     border-radius: 50%;
     vertical-align: bottom;
     background: getColor('claret-2');
@@ -154,5 +154,9 @@ $share-button-size: 38px;
     font-weight: 600;
     font-size: 1.5em;
     margin-right: 10px;
+  }
+
+  .o-forms__affix-wrapper {
+    background-color:#000000;
   }
 }

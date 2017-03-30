@@ -11,14 +11,13 @@ export default () => ({ // eslint-disable-line
   //       new Date('2016-05-17T17:11:22Z')
   publishedDate: new Date(),
 
-  headline: 'Politics and the English Language',
+  headline: 'Can a robot do your job?',
 
   // summary === standfirst (Summary is what the content API calls it)
-  summary: 'Political language is designed to make lies sound truthful' +
-           'and murder respectable, and to give an appearance of solidity to pure wind',
+  summary: 'This is where the standfirst goes, drawing readers into the story',
 
   topic: {
-    name: 'Starter Kit',
+    name: 'Artificial Intelligence and Robotics',
     url: '/foo',
   },
 
