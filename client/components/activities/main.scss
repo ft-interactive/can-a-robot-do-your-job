@@ -6,9 +6,25 @@
   #activities-container__instructions {
     font-style: italic;
   }
-  .o-forms__checkbox {
-    width:28px;
-    height:28px;
-    background-color:#000000;
+
+  .o-forms {
+    padding:0;
+
+    p {
+      margin-left:30px;
+      margin-top: 5px;
+    }
+
+  }
+
+
+  .o-forms__checkbox+.o-forms__label::before, .o-forms__radio+.o-forms__label::before {
+    width:36px;
+    height:36px;
+  }
+
+  .o-forms__label::after  {
+    width:36px;
+    height:36px;
   }
 }

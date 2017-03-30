@@ -151,7 +151,7 @@ $share-button-size: 38px;
     height: 36px;
     line-height: 14px;
     border-radius: 50%;
-    vertical-align: bottom;
+    vertical-align: top;
     background: getColor('claret-2');
     color: white;
     text-align: center;
@@ -161,9 +161,6 @@ $share-button-size: 38px;
     margin-right: 10px;
   }
 
-  /*.o-forms__affix-wrapper {
-    background-color:#000000;
-  }*/
   .o-buttons {
     background-color:#a7a59b;
     color:#ffffff;
@@ -186,6 +183,8 @@ $share-button-size: 38px;
   }
   .resultOne__methodology {
     font-size:12px;
+    margin-top:10px;
+    margin-bottom: 20px;
   }
 
 }

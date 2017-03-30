@@ -31,7 +31,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('./data/data_sample.csv')
+      .get('./data/data.csv')
       .then((response) => {
         const data = d3.csvParse(response.data);
         const allOccupationsActivities = _.groupBy(data, 'DWA Title');
