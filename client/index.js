@@ -15,6 +15,7 @@ class App extends Component {
     this.state = {
       data: [],
       industries: [],
+      occupations: [],
       chosenJobId: null,
       chosenJobName: null,
       allOccupationsResults: {},
@@ -49,6 +50,14 @@ class App extends Component {
           industries: d3.csvParse(response.data),
         });
       });
+
+    axios
+      .get('./data/minor_groups.csv')
+      .then((response) => {
+        this.setState({
+          occupations: d3.csvParse(response.data),
+        });
+      });
   }
 
   getActivityResultNumbers(jobActivities) {
@@ -79,8 +88,8 @@ class App extends Component {
     };
   }
 
-  setChosenJob(jobId, jobName) {
-    console.log('chose job', jobId, jobName);
+  setChosenJob(jobId) {
+    const jobName = this.state.occupations.filter(job => job.id === jobId)[0].minor_group_title;
 
     // get total number of job activities given jobId
     const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
@@ -135,7 +144,7 @@ class App extends Component {
 
     return (
       <div>
-        <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
+        <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
         <ProportionalStackedBarChart data={proportionalBarChartData} />
         {personalProgress()}

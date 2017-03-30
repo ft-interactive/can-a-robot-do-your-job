@@ -8,6 +8,7 @@ class Search extends Component {
 
     this.state = {
       industries: this.props.industries,
+      occupations: this.props.occupations,
       jobs: [],
     };
 
@@ -15,38 +16,51 @@ class Search extends Component {
     this.setJob = this.setJob.bind(this);
   }
 
+  componentDidMount() {
+    const presetButtons = document.querySelectorAll('#preset-button-container button');
+    Array.from(presetButtons).forEach((elements) => {
+      elements.addEventListener('click', () => {
+        let minorCategoryId = elements.getAttribute('data-id');
+        if (minorCategoryId === 'random') {
+          minorCategoryId = this.state.occupations[Math.floor(Math.random() * this.state.occupations.length)].id;
+        }
+        const majorGroupId = minorCategoryId.split('-')[0];
+        this.getJobsList(majorGroupId);
+        this.setJob(minorCategoryId);
+
+        document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).setAttribute('selected', 'selected');
+        document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).setAttribute('selected', 'selected');
+      });
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       industries: nextProps.industries,
+      occupations: nextProps.occupations,
     });
   }
 
   getJobsList(majorGroupId) {
-    axios
-      .get('./data/minor_groups.csv')
-      .then((response) => {
-        const allJobs = d3.csvParse(response.data);
-        const filteredJobs = allJobs.filter((job) => job.id.split('-')[0] === majorGroupId);
+    const allJobs = this.state.occupations;
+    const filteredJobs = allJobs.filter(job => job.id.split('-')[0] === majorGroupId);
 
-        this.setState({
-          jobs: filteredJobs,
-        });
-      });
+    this.setState({
+      jobs: filteredJobs,
+    });
   }
 
   setJob(minorGroupId) {
-    const jobName = this.state.jobs.filter(job => job.id === minorGroupId)[0].minor_group_title;
-
-    this.props.setChosenJobFunc(minorGroupId, jobName);
+    this.props.setChosenJobFunc(minorGroupId);
   }
 
   render() {
     const dropdownIndustry = this.state.industries.map((industry) => {
-      return (<option value={industry.id.split('-')[0]}>{industry.major_group_title}</option>)
+      return (<option value={industry.id.split('-')[0]}>{industry.major_group_title}</option>);
     });
 
     const dropdownOccupation = this.state.jobs.map((job) => {
-      return (<option value={job.id}>{job.minor_group_title}</option>)
+      return (<option value={job.id}>{job.minor_group_title}</option>);
     });
 
     return (
@@ -72,13 +86,13 @@ class Search extends Component {
               </select>
             </div>
           </div>
-           <div id="preset-button-container">
-          <span>Popular: </span>
-          <button className="o-buttons">Financial analyst</button>
-          <button className="o-buttons">Nurse</button>
-          <button className="o-buttons">Construction worker</button>
-          <button className="o-buttons">RANDOM</button>
-        </div>
+          <div id="preset-button-container">
+            <span>Examples: </span>
+            <button className="o-buttons" data-id="13-2000">Financial analyst</button>
+            <button className="o-buttons" data-id="31-1000">Nurse</button>
+            <button className="o-buttons" data-id="25-1000">College professor</button>
+            <button className="o-buttons" data-id="random">RANDOM</button>
+          </div>
         </div>
       </div>
     );
@@ -87,6 +101,7 @@ class Search extends Component {
 
 Search.propTypes = {
   industries: React.PropTypes.array,
+  occupations: React.PropTypes.array,
   setChosenJobFunc: React.PropTypes.func,
 };
 
