@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 
 import Search from './components/search';
 import ProportionalStackedBarChart from './components/proportional-stacked-bar';
+import Activities from './components/activities';
 
 class App extends Component {
   constructor(props) {
@@ -119,6 +120,7 @@ class App extends Component {
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
         <ProportionalStackedBarChart data={proportionalBarChartData} />
+        <Activities />
       </div>
     );
   }
