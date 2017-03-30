@@ -156,7 +156,17 @@ $share-button-size: 38px;
     margin-right: 10px;
   }
 
-  .o-forms__affix-wrapper {
+  /*.o-forms__affix-wrapper {
     background-color:#000000;
+  }*/
+  .o-buttons {
+    background-color:#a7a59b;
+    color:#ffffff;
+    border:none;
+    border-radius:3px;
+  }
+
+  .o-typography-subhead {
+    font-size:1em;
   }
 }
