@@ -95,6 +95,10 @@ class App extends Component {
     });
   }
 
+  updatePersonalActivities(node) {
+    console.log('this changed', node);
+  }
+
   render() {
     const proportionalBarChartData = [
       { key: 'allOccupationsResults',
@@ -122,7 +126,7 @@ class App extends Component {
         <Search industries={this.state.industries} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
         <ProportionalStackedBarChart data={proportionalBarChartData} />
-        <Activities activities={this.state.jobActivities} />
+        <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
   }
