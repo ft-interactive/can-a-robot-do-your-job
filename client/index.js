@@ -27,7 +27,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('./data/data.csv')
+      .get('./data/data_sample.csv')
       .then((response) => {
         const data = d3.csvParse(response.data);
         const allOccupationsActivities = _.groupBy(data, 'DWA Title');
@@ -95,10 +95,13 @@ class App extends Component {
   render() {
     const proportionalBarChartData = [
       { key: 'allOccupationsResults',
+        label: 'All occupations',
         data: this.state.allOccupationsResults },
       { key: 'jobsResults',
+        label: this.state.chosenJobName,
         data: this.state.jobsResults },
       { key: 'personalizedResults',
+        label: 'Me',
         data: this.state.personalizedResults },
     ];
 
