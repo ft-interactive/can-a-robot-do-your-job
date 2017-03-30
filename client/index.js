@@ -133,7 +133,7 @@ class App extends Component {
             <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
             <div>of {this.state.jobsResults.numJobActivities} tasks</div>
             <div>could be done by a robot.</div>
-            <div className="resultOne__methodology">Methodology</div>
+            <div className="resultOne__methodology"><a href="#methodology_section">Read the methodology</a></div>
         </div>);
       }
       return null;
