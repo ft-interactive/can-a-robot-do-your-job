@@ -85,6 +85,8 @@ class ProportionalStackedBarChart extends Component {
           .attr('transform', `translate(${margin.left}, ${margin.top})`)
           .call(yAxis)
         .selectAll('text')
+          .attr('font-size', '16px')
+          .attr('transform', `translate(0, ${(-yScale.bandwidth() / 2) - 14})`)
           .style('text-anchor', 'start');
 
       svg.select('.y')
@@ -107,6 +109,9 @@ class ProportionalStackedBarChart extends Component {
         .data(data)
       .enter().append('g')
         .attr('class', 'bar')
+        .attr('stroke', 'white')
+        .attr('stroke-width', '1')
+        .attr('shape-rendering', 'crispEdges')
         .attr('transform', d => `translate(0, ${yScale(d.label)})`);
 
       const yesRect = bar.append('rect')
