@@ -14,7 +14,7 @@ export default () => ({ // eslint-disable-line
   headline: 'Can a robot do your job?',
 
   // summary === standfirst (Summary is what the content API calls it)
-  summary: 'This is where the standfirst goes, drawing readers into the story',
+  summary: 'Find out how much of your job can technically be automated.',
 
   topic: {
     name: 'Artificial Intelligence and Robotics',
@@ -42,10 +42,10 @@ export default () => ({ // eslint-disable-line
   ],
 
   // Appears in the HTML <title>
-  title: '',
+  title: 'What parts of your work can be automated?',
 
   // meta data
-  description: '',
+  description: 'Interactive calculator by the Financial Times that shows how much of your job can technically be done by a robot',
 
   /*
   TODO: Select Twitter card type -
@@ -68,12 +68,12 @@ export default () => ({ // eslint-disable-line
   // TWITTER
   // twitterImage: '',
   // twitterCreator: '@individual's_account',
-  // tweetText:  '',
+     tweetText:  'Here’s how much of your job can be done by a robot',
   // twitterHeadline:  '',
 
   // FACEBOOK
   // facebookImage: '',
-  // facebookHeadline: '',
+     facebookHeadline: 'Can a robot do your job?',
 
   tracking: {
 
