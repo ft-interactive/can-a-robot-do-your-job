@@ -150,7 +150,7 @@ class App extends Component {
       <div>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
-        <ProportionalStackedBarChart data={proportionalBarChartData} />
+        {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
         {personalProgress()}
         <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
