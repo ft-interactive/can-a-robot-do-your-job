@@ -115,7 +115,7 @@ class App extends Component {
     const resultOne = () => {
       if (this.state.chosenJobId) {
         return (<div id="resultOne">
-          For {this.state.chosenJobName}, {this.state.jobsResults.yes} of {this.state.jobsResults.numJobActivities} tasks could be done by a robot.
+          For this occupation, <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span> of {this.state.jobsResults.numJobActivities} tasks could be done by a robot.
         </div>);
       }
       return null;
