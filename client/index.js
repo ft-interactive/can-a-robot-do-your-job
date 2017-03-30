@@ -52,8 +52,8 @@ class App extends Component {
     const robotActivities = _.filter(jobActivities, (job) => {
       if (job.length > 1) {
         return job.reduce((a, b) => {
-          return a['Technically automatable flag'] === 'TRUE' && b['Technically automatable flag'] === 'TRUE';
-        });
+          return (a['Technically automatable flag'] === 'TRUE' || a === true) && b['Technically automatable flag'] === 'TRUE';
+        }, true);
       }
       return job[0]['Technically automatable flag'] === 'TRUE';
     });
@@ -61,8 +61,8 @@ class App extends Component {
     const notRobotActivities = _.filter(jobActivities, (job) => {
       if (job.length > 1) {
         return job.reduce((a, b) => {
-          return !(a['Technically automatable flag'] === 'FALSE' && b['Technically automatable flag'] === 'FALSE');
-        });
+          return (a === true && b['Technically automatable flag'] === 'FALSE');
+        }, true);
       }
       return job[0]['Technically automatable flag'] === 'FALSE';
     });
@@ -93,11 +93,14 @@ class App extends Component {
   }
 
   render() {
-    const proportionalBarChartData = {
-      allOccupationsResults: this.state.allOccupationsResults,
-      jobsResults: this.state.jobsResults,
-      personalizedResults: this.state.personalizedResults,
-    };
+    const proportionalBarChartData = [
+      { key: 'allOccupationsResults',
+        data: this.state.allOccupationsResults },
+      { key: 'jobsResults',
+        data: this.state.jobsResults },
+      { key: 'personalizedResults',
+        data: this.state.personalizedResults },
+    ];
 
     const resultOne = () => {
       if (this.state.chosenJobId) {
