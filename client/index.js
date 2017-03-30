@@ -95,10 +95,13 @@ class App extends Component {
   render() {
     const proportionalBarChartData = [
       { key: 'allOccupationsResults',
+        label: 'All occupations',
         data: this.state.allOccupationsResults },
       { key: 'jobsResults',
+        label: this.state.chosenJobName || 'Your occupation',
         data: this.state.jobsResults },
       { key: 'personalizedResults',
+        label: 'Me',
         data: this.state.personalizedResults },
     ];
 

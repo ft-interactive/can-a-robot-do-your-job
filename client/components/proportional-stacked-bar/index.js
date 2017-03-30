@@ -42,7 +42,6 @@ class ProportionalStackedBarChart extends Component {
 
   drawChart(inputData = this.props.data) {
     const data = inputData;
-    // console.log(data);
 
     const margin = { // Mike Bostock's margin convention
       top: 20,
@@ -60,7 +59,7 @@ class ProportionalStackedBarChart extends Component {
         .range([0, width]);
 
     const yScale = d3.scaleBand()
-        .domain(data.map(d => d.key))
+        .domain(data.map(d => d.label))
         .range([0, height]);
 
     const xAxis = d3.axisBottom()
@@ -68,7 +67,8 @@ class ProportionalStackedBarChart extends Component {
         .ticks(10);
 
     const yAxis = d3.axisRight()
-        .scale(yScale);
+        .scale(yScale)
+        .tickSize(0);
     //
     if (this.state.initialDraw) {
       const chart = this.connectFauxDOM('svg', 'chart');
@@ -107,12 +107,12 @@ class ProportionalStackedBarChart extends Component {
         .data(data)
       .enter().append('g')
         .attr('class', 'bar')
-        .attr('transform', d => `translate(0, ${yScale(d.key)})`);
+        .attr('transform', d => `translate(0, ${yScale(d.label)})`);
 
       const yesRect = bar.append('rect')
         .attr('class', 'rect')
         .attr('x', 0)
-        .attr('y', d => yScale(d.key) / 4)
+        .attr('y', d => yScale(d.label) / 4)
         .attr('width', d => xScale(d.data.yes / d.data.numJobActivities))
         .attr('height', yScale.bandwidth() / 2)
         .attr('fill', '#26747a');
@@ -120,7 +120,7 @@ class ProportionalStackedBarChart extends Component {
       const noRect = bar.append('rect')
         .attr('class', 'rect')
         .attr('x', d => xScale(d.data.yes / d.data.numJobActivities))
-        .attr('y', d => yScale(d.key) / 4)
+        .attr('y', d => yScale(d.label) / 4)
         .attr('width', (d) => {
           return xScale(d.data.no / d.data.numJobActivities);
         })
@@ -130,7 +130,7 @@ class ProportionalStackedBarChart extends Component {
       const sometimesRect = bar.append('rect')
         .attr('class', 'rect')
         .attr('x', d => xScale((d.data.yes + d.data.no) / d.data.numJobActivities))
-        .attr('y', d => yScale(d.key) / 4)
+        .attr('y', d => yScale(d.label) / 4)
         .attr('width', (d) => {
           return xScale(d.data.sometimes / d.data.numJobActivities);
         })
