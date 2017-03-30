@@ -31,7 +31,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('./data/data.csv')
+      .get('./data/data_sample.csv')
       .then((response) => {
         const data = d3.csvParse(response.data);
         const allOccupationsActivities = _.groupBy(data, 'DWA Title');
@@ -129,7 +129,11 @@ class App extends Component {
     const resultOne = () => {
       if (this.state.chosenJobId) {
         return (<div id="resultOne">
-          For this occupation, <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span> of {this.state.jobsResults.numJobActivities} tasks could be done by a robot.
+          <div>For this occupation,</div>
+            <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
+            <div>of {this.state.jobsResults.numJobActivities} tasks</div>
+            <div>could be done by a robot.</div>
+            <div className="resultOne__methodology">Methodology</div>
         </div>);
       }
       return null;
