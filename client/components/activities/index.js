@@ -6,20 +6,45 @@ class Activities extends Component {
 
     this.state = {
       activities: {},
+      transformedActivities: [],
+      selectedActivities: {},
     };
   }
 
   componentWillReceiveProps(nextProps) {
+    const activityKeys = Object.keys(nextProps.activities);
+
+    const transformedActivities = activityKeys.map((activity) => {
+      return {
+        key: activity,
+        automatable: true,
+        details: nextProps.activities[activity],
+      };
+    });
+
     this.setState({
       activities: nextProps.activities,
+      transformedActivities,
     });
   }
 
+  updateSelectedActivities(checkBoxObj) {
+    if (checkBoxObj.checked) {
+      // add to selectedActivities
+      this.state.selectedActivities[checkBoxObj.value] = this.props.activities[checkBoxObj.value];
+    } else {
+      // remove from selectedActivities
+      delete this.state.selectedActivities[checkBoxObj.value];
+    }
+
+    this.props.updatePersonalActivitiesFunc(this.state.selectedActivities);
+  }
+
   render() {
-    const activities = Object.keys(this.state.activities).map((activityName, i) => {
+    const activities = this.state.transformedActivities.map((activity, i) => {
       return (<fieldset className="o-forms">
-        <input type="checkbox" name={`checkbox${i}`} value="1" className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.props.updatePersonalActivitiesFunc(event.target)} />
-        <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activityName}</p></label>
+        <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
+        <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
     });
 
@@ -36,6 +61,7 @@ class Activities extends Component {
 
 Activities.propTypes = {
   activities: React.PropTypes.object,
+  transformedActivities: React.PropTypes.array,
   updatePersonalActivitiesFunc: React.PropTypes.func,
 };
 

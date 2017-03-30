@@ -25,6 +25,7 @@ class App extends Component {
 
     this.setChosenJob = this.setChosenJob.bind(this);
     this.getActivityResultNumbers = this.getActivityResultNumbers.bind(this);
+    this.updatePersonalActivities = this.updatePersonalActivities.bind(this);
   }
 
   componentDidMount() {
@@ -95,8 +96,12 @@ class App extends Component {
     });
   }
 
-  updatePersonalActivities(node) {
-    console.log('this changed', node);
+  updatePersonalActivities(selectedActivities) {
+    console.log('selected activities', selectedActivities);
+
+    this.setState({
+      personalizedResults: this.getActivityResultNumbers(selectedActivities),
+    });
   }
 
   render() {
