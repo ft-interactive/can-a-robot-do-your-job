@@ -59,21 +59,25 @@ class Search extends Component {
           <button className="o-buttons">Show me a random occupation</button>
         </div>
         <div id="category-container">
-          <div className="category-dropdowns">
-            <div className="step-number">1</div>
-            <label htmlFor="dropdownIndustry">Pick an industry</label>
-            <select onChange={event => this.getJobsList(event.target.value)} id="dropdownIndustry">
-              <option>Pick an industry</option>
-              {dropdownIndustry}
-            </select>
+          <div className="category-dropdowns o-forms">
+            <label htmlFor="dropdownIndustry" className="o-forms__label">Pick an industry</label>
+            <div className="o-forms__affix-wrapper">
+              <div className="step-number o-forms__prefix">1</div>
+              <select className="o-forms__select" onChange={event => this.getJobsList(event.target.value)} id="dropdownIndustry">
+                <option>Pick an industry</option>
+                {dropdownIndustry}
+              </select>
+            </div>
           </div>
-          <div className="category-dropdowns">
-            <div className="step-number">2</div>
-            <label htmlFor="dropdownOccupation">Pick a job</label>
-            <select disabled={dropdownOccupation.length <= 0} onChange={event => this.setJob(event.target.value)} id="dropdownOccupation">
-              <option>Pick a job</option>
-              {dropdownOccupation}
-            </select>
+          <div className="category-dropdowns  o-forms">
+            <label htmlFor="dropdownOccupation" className="o-forms__label">Pick a job</label>
+            <div className="o-forms__affix-wrapper">
+              <div className="step-number o-forms__prefix">2</div>
+              <select className="o-forms__select" disabled={dropdownOccupation.length <= 0} onChange={event => this.setJob(event.target.value)} id="dropdownOccupation">
+                <option>Pick a job</option>
+                {dropdownOccupation}
+              </select>
+            </div>
           </div>
         </div>
       </div>
