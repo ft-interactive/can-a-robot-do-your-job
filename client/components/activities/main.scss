@@ -9,14 +9,15 @@
 
   .o-forms {
     padding:0;
+    max-width: none;
 
     p {
       margin-left:30px;
-      margin-top: 5px;
+      margin-top: 2px;
+      font-family: MetricWeb, sans-serif;
+      line-height: 1em;
     }
-
   }
-
 
   .o-forms__checkbox+.o-forms__label::before, .o-forms__radio+.o-forms__label::before {
     width:36px;
