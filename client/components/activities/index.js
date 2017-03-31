@@ -42,7 +42,7 @@ class Activities extends Component {
 
   render() {
     const activities = this.state.transformedActivities.map((activity, i) => {
-      return (<fieldset className="o-forms">
+      return (<fieldset className="o-forms" key={activity.key}>
         <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
         <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
@@ -52,7 +52,7 @@ class Activities extends Component {
       <div id="activities-container">
         <div className="step-number o-forms__prefix">3</div>
         <h2 className="o-typography-heading2">Which activities do you do?</h2>
-        <p id="activities-container__instructions"></p>
+        <p id="activities-container__instructions" />
         {activities}
       </div>
     );

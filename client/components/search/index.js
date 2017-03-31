@@ -57,11 +57,11 @@ class Search extends Component {
 
   render() {
     const dropdownIndustry = this.state.industries.map((industry) => {
-      return (<option value={industry.id.split('-')[0]}>{industry.major_group_title}</option>);
+      return (<option key={industry.id.split('-')[0]} value={industry.id.split('-')[0]}>{industry.major_group_title}</option>);
     });
 
     const dropdownOccupation = this.state.jobs.map((job) => {
-      return (<option value={job.id}>{job.minor_group_title}</option>);
+      return (<option key={job.id} value={job.id}>{job.minor_group_title}</option>);
     });
 
     return (

@@ -43,7 +43,7 @@ class ProportionalStackedBarChart extends Component {
         <div className="mobileKeyItem" id="mobileKey__no">No</div>
       </div>);
 
-      return (<div className="bar-container" id={`bar__${d.key}--wrapper`}>
+      return (<div className="bar-container" id={`bar__${d.key}--wrapper`} key={d.key}>
         <div id={`bar__${d.key}--container`}>
           <div className="bar__label">
             <label htmlFor={`bar__${d.key}`}>{d.label}:</label>
