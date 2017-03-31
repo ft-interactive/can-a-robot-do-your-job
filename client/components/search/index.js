@@ -89,9 +89,9 @@ class Search extends Component {
           <div id="preset-button-container">
             <span className="examplesList">Or choose an example: </span>
             <div>
-            <button className="o-buttons" data-id="13-2000">Financial analyst</button>
-            <button className="o-buttons" data-id="31-1000">Nurse</button>
-            <button className="o-buttons" data-id="25-1000">College professor</button>
+            <button className="o-buttons" data-id="13-2000">Financial specialist</button>
+            <button className="o-buttons" data-id="31-1000">Healthcare support</button>
+            <button className="o-buttons" data-id="25-1000">Postsecondary teacher</button>
             <button className="o-buttons" data-id="random">Random</button>
             </div>
           </div>
