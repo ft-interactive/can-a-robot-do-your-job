@@ -139,10 +139,10 @@ class App extends Component {
         return (<div id="resultOne">
           <div>For this occupation,</div>
           <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
-          <div>of {this.state.jobsResults.numJobActivities} tasks</div>
+          <div>of {this.state.jobsResults.numJobActivities} activities</div>
           <div>could be done by a robot.</div>
+          <p>This category includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /></p>
           <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
-          <p>This category includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /> <a href="">Read more &gt;</a></p>
         </div>);
       }
       return null;

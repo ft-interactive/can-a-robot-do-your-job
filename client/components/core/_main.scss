@@ -187,16 +187,26 @@ $share-button-size: 38px;
 
   #resultOne {
     text-align: center;
+    font-family: Georgia, serif;
+    font-size: 1.2em;
+    line-height: 1.5em;
   }
 
   #resultOne__bigNumber {
-    font-size:60px;
+    font-family: MetricWeb, sans-serif;
+    font-size:70px;
     font-weight:500;
+    line-height: 1.2em;
   }
 
   .resultOne__methodology {
     font-size:13px;
     margin-top:10px;
     margin-bottom: 20px;
+  }
+
+  .bar-key {
+    color:#777777;
+    font-size:0.9em;
   }
 }
