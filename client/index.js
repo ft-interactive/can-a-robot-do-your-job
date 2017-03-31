@@ -32,7 +32,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get('./data/data.csv')
+      .get('https://ig.ft.com/static/can-a-robot-do-your-job/data.csv')
       .then((response) => {
         const data = d3.csvParse(response.data);
         const allOccupationsActivities = _.groupBy(data, 'DWA Title');
@@ -45,7 +45,7 @@ class App extends Component {
       });
 
     axios
-      .get('./data/major_groups.csv')
+      .get('https://ig.ft.com/static/can-a-robot-do-your-job/major_groups.csv')
       .then((response) => {
         this.setState({
           industries: d3.csvParse(response.data),
@@ -53,7 +53,7 @@ class App extends Component {
       });
 
     axios
-      .get('./data/minor_groups.csv')
+      .get('https://ig.ft.com/static/can-a-robot-do-your-job/minor_groups.csv')
       .then((response) => {
         this.setState({
           occupations: d3.csvParse(response.data),
@@ -132,7 +132,7 @@ class App extends Component {
 
     const resultOne = () => {
       if (this.state.chosenJobId) {
-        const exampleJobsList = `This category includes jobs such as <b>${this.state.exampleJobsList.slice(0, -1).join('</b>, <b>')} and <b>${this.state.exampleJobsList.slice(-1)}</b>.`;
+        const exampleJobsList = `<b>${this.state.exampleJobsList.slice(0, -1).join('</b>, <b>')} and <b>${this.state.exampleJobsList.slice(-1)}</b>.`;
 
         // const exampleJobsList = [this.state.exampleJobsList.slice(0, -1).join(', '), this.state.exampleJobsList.slice(-1)[0]].join(this.state.exampleJobsList.length < 2 ? '' : ' and ');
 
@@ -142,7 +142,7 @@ class App extends Component {
           <div>of {this.state.jobsResults.numJobActivities} tasks</div>
           <div>could be done by a robot.</div>
           <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
-          <p><span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /> <a href="">Read more &gt;</a></p>
+          <p>This category includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /> <a href="">Read more &gt;</a></p>
         </div>);
       }
       return null;
