@@ -51,6 +51,7 @@ class Search extends Component {
   }
 
   setJob(minorGroupId) {
+    this.props.clearOutChosenJobFunc();
     this.props.setChosenJobFunc(minorGroupId);
   }
 
@@ -105,6 +106,7 @@ Search.propTypes = {
   industries: React.PropTypes.array,
   occupations: React.PropTypes.array,
   setChosenJobFunc: React.PropTypes.func,
+  clearOutChosenJobFunc: React.PropTypes.func,
 };
 
 export default Search;
