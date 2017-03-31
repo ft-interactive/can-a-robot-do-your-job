@@ -52,7 +52,7 @@ class Activities extends Component {
       <div id="activities-container">
         <div className="step-number o-forms__prefix">3</div>
         <h2 className="o-typography-heading2">How much of my job could a robot do?</h2>
-        <p id="activities-container__instructions">Select all activities that apply.</p>
+        <p id="activities-container__instructions">Which activities do you do?</p>
         {activities}
       </div>
     );
