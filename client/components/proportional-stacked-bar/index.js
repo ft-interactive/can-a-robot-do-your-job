@@ -18,8 +18,15 @@ class ProportionalStackedBarChart extends Component {
         width: `${((d.data.no * 100) / d.data.numJobActivities)}%`,
       };
 
+      const barKey = (<div>
+        <div style={yesStyles} className="bar-key">Yes</div>
+        <div style={sometimesStyles} className="bar-key">Sometimes</div>
+        <div style={noStyles} className="bar-key">No</div>
+      </div>);
+
       return (<div className="bar-container">
         <label htmlFor={`bar__${d.key}`}>{d.label}:</label>
+        { d.key === 'allOccupationsResults' ? barKey : null }
         <div id={`bar__${d.key}`} className="bar">
           <div id={`bar__${d.key}-yes`} className="bar-segment bar-yes" style={yesStyles} />
           <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles} />
