@@ -17,10 +17,15 @@
 
       .bar__label,
       .bar,
+      #mobileKey,
       p {
         max-width: 600px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      #mobileKey {
+        display: block;
       }
     }
 
@@ -81,6 +86,29 @@
       font-size: 0.8em;
       text-align: right;
       float: right;
+    }
+
+    #mobileKey {
+      margin-top: 1em;
+      display: none;
+
+      .mobileKeyItem {
+        display: inline-block;
+        margin-right: 3px;
+        padding: 5px;
+      }
+
+      #mobileKey__yes {
+        border-top: 3px solid getColor('claret-2');
+      }
+
+      #mobileKey__sometimes {
+        border-top: 3px solid getColor('yellow-tint1');
+      }
+
+      #mobileKey__no {
+        border-top: 3px solid #208c8f;
+      }
     }
   }
 }
