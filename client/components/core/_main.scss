@@ -166,20 +166,6 @@ $share-button-size: 38px;
     line-height: 2em;
   }
 
-  .o-buttons {
-    background-color:#a7a59b;
-    color:#ffffff;
-    border:none;
-    border-radius:3px;
-    font-size: 16px;
-    margin-bottom: 5px;
-    border:none;
-
-    &[data-id="random"]{
-      background-color:#936971;
-    }
-  }
-
   .o-typography-subhead {
     font-family: Georgia, serif;
     font-size:1em;

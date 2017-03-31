@@ -28,6 +28,7 @@ class App extends Component {
     this.setChosenJob = this.setChosenJob.bind(this);
     this.getActivityResultNumbers = this.getActivityResultNumbers.bind(this);
     this.updatePersonalActivities = this.updatePersonalActivities.bind(this);
+    this.clearOutChosenJob = this.clearOutChosenJob.bind(this);
   }
 
   componentDidMount() {
@@ -109,6 +110,19 @@ class App extends Component {
     });
   }
 
+  clearOutChosenJob() {
+    // console.log('reset stuff');
+
+    this.setState({
+      chosenJobId: null,
+      chosenJobName: null,
+      exampleJobsList: [],
+      jobsResults: {},
+      jobActivities: {},
+      personalizedResults: {},
+    });
+  }
+
   updatePersonalActivities(selectedActivities) {
     console.log('selected activities', selectedActivities);
 
@@ -149,8 +163,8 @@ class App extends Component {
     };
 
     return (
-      <div>
-        <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} />
+      <div className={(this.state.chosenJobId ? 'jobchosen' : null)}>
+        <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
         <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />

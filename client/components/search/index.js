@@ -51,6 +51,7 @@ class Search extends Component {
   }
 
   setJob(minorGroupId) {
+    this.props.clearOutChosenJobFunc();
     this.props.setChosenJobFunc(minorGroupId);
   }
 
@@ -89,10 +90,10 @@ class Search extends Component {
           <div id="preset-button-container">
             <span className="examplesList">Or choose an example: </span>
             <div>
-            <button className="o-buttons" data-id="13-2000">Financial specialist</button>
-            <button className="o-buttons" data-id="31-1000">Healthcare support</button>
-            <button className="o-buttons" data-id="25-1000">Postsecondary teacher</button>
-            <button className="o-buttons" data-id="random">Random</button>
+              <button className="o-buttons" data-id="13-2000">Financial specialist</button>
+              <button className="o-buttons" data-id="31-1000">Healthcare support</button>
+              <button className="o-buttons" data-id="25-1000">Postsecondary teacher</button>
+              <button className="o-buttons" data-id="random">Random</button>
             </div>
           </div>
         </div>
@@ -105,6 +106,7 @@ Search.propTypes = {
   industries: React.PropTypes.array,
   occupations: React.PropTypes.array,
   setChosenJobFunc: React.PropTypes.func,
+  clearOutChosenJobFunc: React.PropTypes.func,
 };
 
 export default Search;

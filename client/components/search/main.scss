@@ -22,4 +22,17 @@
       max-width: 260px;
     }
   }
+
+  .o-buttons {
+    background-color:#a7a59b;
+    color:#ffffff;
+    border:none;
+    border-radius:3px;
+    font-size: 16px;
+    margin-bottom: 5px;
+
+    &[data-id="random"]{
+      background-color:#936971;
+    }
+  }
 }
