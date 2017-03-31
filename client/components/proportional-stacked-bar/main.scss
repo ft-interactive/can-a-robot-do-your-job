@@ -4,6 +4,25 @@
   .bar-container {
     margin: 1em 0;
 
+    .tacked {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background: #fff1e0;
+      padding: 1em;
+      border-bottom: 1px solid #cec6b9;
+      overflow: hidden;
+      z-index: 5;
+
+      label,
+      .bar,
+      p {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+
     .bar-key {
       display: inline-block;
       text-align: center;

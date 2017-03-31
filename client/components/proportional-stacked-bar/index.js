@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 
 class ProportionalStackedBarChart extends Component {
+  componentDidMount() {
+    window.addEventListener('scroll', () => {
+      const containerHeight = document.querySelector('#bar__personalizedResults--wrapper').getBoundingClientRect().bottom - document.querySelector('#bar__personalizedResults--wrapper').getBoundingClientRect().top;
+      const containerPosition = document.querySelector('#bar__personalizedResults--wrapper').offsetTop + containerHeight;
+
+      if (window.scrollY > containerPosition - 130) {
+        document.querySelector('#bar__personalizedResults--container').classList.add('tacked');
+      } else {
+        document.querySelector('#bar__personalizedResults--container').classList.remove('tacked');
+      }
+    });
+  }
+
   render() {
     const bars = this.props.data.map((d) => {
       const yesStyles = {
@@ -24,13 +37,16 @@ class ProportionalStackedBarChart extends Component {
         <div style={noStyles} className="bar-key">No</div>
       </div>);
 
-      return (<div className="bar-container">
-        <label htmlFor={`bar__${d.key}`}>{d.label}:</label>
-        { d.key === 'allOccupationsResults' ? barKey : null }
-        <div id={`bar__${d.key}`} className="bar">
-          <div id={`bar__${d.key}-yes`} className="bar-segment bar-yes" style={yesStyles} />
-          <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles} />
-          <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles} />
+      return (<div className="bar-container" id={`bar__${d.key}--wrapper`}>
+        <div id={`bar__${d.key}--container`}>
+          <label htmlFor={`bar__${d.key}`}>{d.label}:</label>
+          { d.key === 'allOccupationsResults' ? barKey : null }
+          <div id={`bar__${d.key}`} className="bar">
+            <div id={`bar__${d.key}-yes`} className="bar-segment bar-yes" style={yesStyles} />
+            <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles} />
+            <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles} />
+          </div>
+          { (d.data.numJobActivities && d.key === 'personalizedResults' ? (<p><b>{d.data.yes}</b> of {d.data.numJobActivities} could be done by a robot.</p>) : null) }
         </div>
       </div>);
     });
@@ -38,7 +54,6 @@ class ProportionalStackedBarChart extends Component {
     return (
       <div id="bar-wrapper">
         {bars}
-        { (this.props.data[2].data.numJobActivities ? (<p><b>{this.props.data[2].data.yes}</b> of {this.props.data[2].data.numJobActivities} could be done by a robot.</p>) : null) }
       </div>
     );
   }
