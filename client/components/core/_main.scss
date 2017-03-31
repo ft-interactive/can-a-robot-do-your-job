@@ -145,7 +145,6 @@ $share-button-size: 38px;
     }
   }
 
-
   .step-number {
     width: 36px;
     height: 36px;
@@ -161,30 +160,43 @@ $share-button-size: 38px;
     margin-right: 10px;
   }
 
+  .examplesList {
+    line-height: 1.5em;
+  }
+
   .o-buttons {
     background-color:#a7a59b;
     color:#ffffff;
     border:none;
     border-radius:3px;
+    font-size: 16px;
+    margin-bottom: 5px;
+
+    &[data-id="random"]{
+      background-color:#936971;
+    }
   }
 
   .o-typography-subhead {
     font-size:1em;
   }
+
   .o-typography-heading2 {
     font-size:1.2em;
   }
+
   #resultOne {
     text-align: center;
   }
+
   #resultOne__bigNumber {
     font-size:60px;
     font-weight:500;
   }
+
   .resultOne__methodology {
     font-size:13px;
     margin-top:10px;
     margin-bottom: 20px;
   }
-
 }
