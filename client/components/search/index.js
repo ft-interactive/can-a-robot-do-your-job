@@ -28,6 +28,14 @@ class Search extends Component {
         this.getJobsList(majorGroupId);
         this.setJob(minorCategoryId);
 
+        if (document.querySelector('#dropdownIndustry option[selected="selected"]')) {
+          document.querySelector('#dropdownIndustry option[selected="selected"]').removeAttribute('selected');
+        }
+
+        if (document.querySelector('#dropdownOccupation option[selected="selected"]')) {
+          document.querySelector('#dropdownOccupation option[selected="selected"]').removeAttribute('selected');
+        }
+
         document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).setAttribute('selected', 'selected');
         document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).setAttribute('selected', 'selected');
       });
