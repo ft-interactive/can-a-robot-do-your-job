@@ -21,13 +21,14 @@
           background: getColor('teal-1');
         }
 
-        &.bar-no {
+        &.bar-sometimes {
           background: getColor('teal-2');
         }
 
-        &.bar-sometimes {
+        &.bar-no {
           background: getColor('yellow-tint1');
         }
+
       }
     }
   }
