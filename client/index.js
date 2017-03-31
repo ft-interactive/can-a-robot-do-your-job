@@ -18,6 +18,7 @@ class App extends Component {
       occupations: [],
       chosenJobId: null,
       chosenJobName: null,
+      exampleJobsList: [],
       allOccupationsResults: {},
       jobsResults: {},
       personalizedResults: {},
@@ -91,6 +92,8 @@ class App extends Component {
   setChosenJob(jobId) {
     const jobName = this.state.occupations.filter(job => job.id === jobId)[0].minor_group_title;
 
+    const exampleJobsList = this.state.occupations.filter(job => job.id === jobId)[0].sample_occupations.split('|');
+
     // get total number of job activities given jobId
     const jobIdRe = `${jobId.split('-')[0]}-${jobId.split('-')[1].split('')[0]}`;
     const jobActivities = _.groupBy(this.state.data.filter(row => row['BLS Code'].slice(0, -3) === jobIdRe), 'DWA Title');
@@ -100,6 +103,7 @@ class App extends Component {
     this.setState({
       chosenJobId: jobId,
       chosenJobName: jobName,
+      exampleJobsList,
       jobsResults,
       jobActivities,
     });
@@ -128,12 +132,17 @@ class App extends Component {
 
     const resultOne = () => {
       if (this.state.chosenJobId) {
+        const exampleJobsList = `This category includes jobs such as <b>${this.state.exampleJobsList.slice(0, -1).join('</b>, <b>')} and <b>${this.state.exampleJobsList.slice(-1)}</b>.`;
+
+        // const exampleJobsList = [this.state.exampleJobsList.slice(0, -1).join(', '), this.state.exampleJobsList.slice(-1)[0]].join(this.state.exampleJobsList.length < 2 ? '' : ' and ');
+
         return (<div id="resultOne">
           <div>For this occupation,</div>
-            <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
-            <div>of {this.state.jobsResults.numJobActivities} tasks</div>
-            <div>could be done by a robot.</div>
-            <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
+          <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
+          <div>of {this.state.jobsResults.numJobActivities} tasks</div>
+          <div>could be done by a robot.</div>
+          <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
+          <p><span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /> <a href="">Read more &gt;</a></p>
         </div>);
       }
       return null;
