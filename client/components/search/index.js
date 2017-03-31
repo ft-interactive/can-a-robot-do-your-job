@@ -67,21 +67,21 @@ class Search extends Component {
       <div id="search-container">
         <div id="category-container">
           <div className="category-dropdowns o-forms">
-            <label htmlFor="dropdownIndustry" className="o-forms__label">Pick an industry</label>
+            <label htmlFor="dropdownIndustry" className="o-forms__label">Select a job category</label>
             <div className="o-forms__affix-wrapper">
               <div className="step-number o-forms__prefix">1</div>
               <select className="o-forms__select" onChange={event => this.getJobsList(event.target.value)} id="dropdownIndustry">
-                <option>Select an industry</option>
+                <option>Select a job category</option>
                 {dropdownIndustry}
               </select>
             </div>
           </div>
           <div className="category-dropdowns  o-forms">
-            <label htmlFor="dropdownOccupation" className="o-forms__label">Pick a job</label>
+            <label htmlFor="dropdownOccupation" className="o-forms__label">Select an occupation</label>
             <div className="o-forms__affix-wrapper">
               <div className="step-number o-forms__prefix">2</div>
               <select className="o-forms__select" disabled={dropdownOccupation.length <= 0} onChange={event => this.setJob(event.target.value)} id="dropdownOccupation">
-                <option>Select a job</option>
+                <option>Select an occupation</option>
                 {dropdownOccupation}
               </select>
             </div>

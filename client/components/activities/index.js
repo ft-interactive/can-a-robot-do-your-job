@@ -51,8 +51,8 @@ class Activities extends Component {
     return (
       <div id="activities-container">
         <div className="step-number o-forms__prefix">3</div>
-        <h2 className="o-typography-heading2">How much of my job could a robot do?</h2>
-        <p id="activities-container__instructions">Which activities do you do?</p>
+        <h2 className="o-typography-heading2">Which activities do you do?</h2>
+        <p id="activities-container__instructions"></p>
         {activities}
       </div>
     );

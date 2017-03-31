@@ -137,14 +137,6 @@ $share-button-size: 38px;
     margin-top: 0;
   }
 
-  #preset-button-container {
-    margin-bottom: 1em;
-
-    button {
-      margin-right: 5px;
-    }
-  }
-
   .step-number {
     width: 36px;
     height: 36px;
@@ -160,8 +152,18 @@ $share-button-size: 38px;
     margin-right: 10px;
   }
 
+  #preset-button-container {
+      margin-bottom: 1em;
+      margin-left:55px;
+
+      button {
+        margin-right: 5px;
+      }
+    }
+
   .examplesList {
-    line-height: 1.5em;
+    font-family: Georgia, serif;
+    line-height: 2em;
   }
 
   .o-buttons {
@@ -178,11 +180,13 @@ $share-button-size: 38px;
   }
 
   .o-typography-subhead {
+    font-family: Georgia, serif;
     font-size:1em;
+    font-weight: 400;
   }
 
   .o-typography-heading2 {
-    font-size:1.2em;
+    font-size:1.5em;
   }
 
   #resultOne {
