@@ -48,12 +48,25 @@ class Activities extends Component {
       </fieldset>);
     });
 
+    const pagination = (<div className="o-buttons__pagination">
+      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" disabled><span className="o-buttons-icon__label">Fewer results</span></button>
+      <button className="o-buttons o-buttons--big" aria-pressed="true">1</button>
+      <button className="o-buttons o-buttons--big">2</button>
+      <button className="o-buttons o-buttons--big">3</button>
+      <span className="faux-inline-block"> ... </span>
+      <button className="o-buttons o-buttons--big">25</button>
+      <button className="o-buttons o-buttons--big">26</button>
+      <button className="o-buttons o-buttons--big">27</button>
+      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-right o-buttons-icon--icon-only"><span className="o-buttons-icon__label">More results</span></button>
+    </div>);
+
     return (
       <div id="activities-container">
         <div className="step-number o-forms__prefix">3</div>
         <h2 className="o-typography-heading2">Which activities do you do?</h2>
-        <p id="activities-container__instructions"></p>
+        <p id="activities-container__instructions" />
         {activities}
+        {pagination}
       </div>
     );
   }
