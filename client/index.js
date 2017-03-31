@@ -148,19 +148,11 @@ class App extends Component {
       return null;
     };
 
-    const personalProgress = () => {
-      if (this.state.chosenJobId && this.state.personalizedResults.numJobActivities) {
-        return (<p><b>{this.state.personalizedResults.yes}</b> of {this.state.personalizedResults.numJobActivities} could be done by a robot.</p>);
-      }
-      return null;
-    };
-
     return (
       <div>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
-        {personalProgress()}
         <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
