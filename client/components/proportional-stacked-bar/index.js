@@ -37,6 +37,12 @@ class ProportionalStackedBarChart extends Component {
         <div style={noStyles} className="bar-key">No</div>
       </div>);
 
+      const mobileKey = (<div id="mobileKey">
+        <div className="mobileKeyItem" id="mobileKey__yes">Yes</div>
+        <div className="mobileKeyItem" id="mobileKey__sometimes">Sometimes</div>
+        <div className="mobileKeyItem" id="mobileKey__no">No</div>
+      </div>);
+
       return (<div className="bar-container" id={`bar__${d.key}--wrapper`}>
         <div id={`bar__${d.key}--container`}>
           <div className="bar__label">
@@ -49,6 +55,7 @@ class ProportionalStackedBarChart extends Component {
             <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles} />
             <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles} />
           </div>
+          { d.key === 'personalizedResults' ? mobileKey : null }
         </div>
       </div>);
     });
