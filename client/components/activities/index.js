@@ -20,7 +20,7 @@ class Activities extends Component {
         automatable: true,
         details: nextProps.activities[activity],
       };
-    });
+    }).sort((a, b) => b.details.length - a.details.length);
 
     this.setState({
       activities: nextProps.activities,
