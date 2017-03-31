@@ -1,5 +1,12 @@
+.jobchosen {
+  #activities-container {
+    opacity: 1;
+  }
+}
+
 #activities-container {
   margin-left: 10px;
+  opacity: 0.2;
 
   h2 {
     display: inline-block;

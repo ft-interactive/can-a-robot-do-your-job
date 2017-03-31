@@ -163,7 +163,7 @@ class App extends Component {
     };
 
     return (
-      <div>
+      <div className={(this.state.chosenJobId ? 'jobchosen' : null)}>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
