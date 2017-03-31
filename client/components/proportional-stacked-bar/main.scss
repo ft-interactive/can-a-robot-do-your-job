@@ -1,0 +1,34 @@
+#bar-wrapper {
+  margin: 1em 0 2em 0;
+
+  .bar-container {
+    margin: 1em 0;
+
+    .bar {
+      width: 100%;
+      height: 20px;
+      border: 1px solid white;
+      background: #e9decf;
+      position: relative;
+      margin-top: 0.5em;
+
+      .bar-segment {
+        position: absolute;
+        height: 100%;
+        border: 1px solid white;
+
+        &.bar-yes {
+          background: getColor('teal-1');
+        }
+
+        &.bar-no {
+          background: getColor('teal-2');
+        }
+
+        &.bar-sometimes {
+          background: getColor('yellow-tint1');
+        }
+      }
+    }
+  }
+}
