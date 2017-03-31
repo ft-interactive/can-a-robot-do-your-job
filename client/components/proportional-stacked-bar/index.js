@@ -38,6 +38,7 @@ class ProportionalStackedBarChart extends Component {
     return (
       <div id="bar-wrapper">
         {bars}
+        <p><b>{this.props.data[2].data.yes}</b> of {this.props.data[2].data.numJobActivities} could be done by a robot.</p>
       </div>
     );
   }
