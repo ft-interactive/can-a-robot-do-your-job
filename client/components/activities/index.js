@@ -61,7 +61,6 @@ class Activities extends Component {
 
 Activities.propTypes = {
   activities: React.PropTypes.object,
-  transformedActivities: React.PropTypes.array,
   updatePersonalActivitiesFunc: React.PropTypes.func,
 };
 
