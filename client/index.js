@@ -167,8 +167,10 @@ class App extends Component {
       return null;
     };
 
-    const fullRender = (
-      <div className={(this.state.chosenJobId ? 'jobchosen' : null)}>
+    return (
+      <div id="custom-react" className={`${(this.state.chosenJobId ? 'jobchosen' : '')} ${(this.state.loaded ? '' : 'loading')}`}>
+        <div id="overlay" />
+        <div id="loadingMessage">Loading interactive...</div>
         <h2 className="o-typography-subhead">Find your occupation:</h2>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
@@ -176,8 +178,6 @@ class App extends Component {
         <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
-
-    return (<div>{(this.state.loaded ? fullRender : 'Loading interactive...')}</div>);
   }
 }
 
