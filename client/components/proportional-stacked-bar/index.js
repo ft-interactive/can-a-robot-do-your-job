@@ -19,20 +19,21 @@ class ProportionalStackedBarChart extends Component {
       const yesVal = d.data.yes || 0;
       const sometimesVal = d.data.sometimes || 0;
       const noVal = d.data.no || 0;
+      const numJobActivitiesVal = d.data.numJobActivities || 0;
 
       const yesStyles = {
         left: 0,
-        width: `${((yesVal * 100) / d.data.numJobActivities)}%`,
+        width: (numJobActivitiesVal !== 0 ? `${((yesVal * 100) / numJobActivitiesVal)}%` : 0),
       };
 
       const sometimesStyles = {
-        left: `${((yesVal * 100) / d.data.numJobActivities)}%`,
-        width: `${((sometimesVal * 100) / d.data.numJobActivities)}%`,
+        left: (numJobActivitiesVal !== 0 ? `${((yesVal * 100) / numJobActivitiesVal)}%` : 0),
+        width: (numJobActivitiesVal !== 0 ? `${((sometimesVal * 100) / numJobActivitiesVal)}%` : 0),
       };
 
       const noStyles = {
-        left: `${(((yesVal + sometimesVal) * 100) / d.data.numJobActivities)}%`,
-        width: `${((noVal * 100) / d.data.numJobActivities)}%`,
+        left: (numJobActivitiesVal !== 0 ? `${(((yesVal + sometimesVal) * 100) / numJobActivitiesVal)}%` : 0),
+        width: (numJobActivitiesVal !== 0 ? `${((noVal * 100) / numJobActivitiesVal)}%` : 0),
       };
 
       const barKey = (<div>
