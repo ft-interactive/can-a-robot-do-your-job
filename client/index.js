@@ -170,7 +170,7 @@ class App extends Component {
     return (
       <div id="custom-react" className={`${(this.state.chosenJobId ? 'jobchosen' : '')} ${(this.state.loaded ? '' : 'loading')}`}>
         <div id="overlay" />
-        <div id="loadingMessage">Loading interactive...</div>
+        <div className="loadingMessage">Loading interactive...</div>
         <h2 className="o-typography-subhead">Find your occupation:</h2>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
