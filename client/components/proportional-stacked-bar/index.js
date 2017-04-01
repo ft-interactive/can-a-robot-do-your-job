@@ -43,6 +43,7 @@ class ProportionalStackedBarChart extends Component {
       </div>);
 
       const mobileKey = (<div id="mobileKey">
+        <span id="mobileKey__label">Could a robot do this?</span>
         <div className="mobileKeyItem" id="mobileKey__yes">Yes</div>
         <div className="mobileKeyItem" id="mobileKey__sometimes">Sometimes</div>
         <div className="mobileKeyItem" id="mobileKey__no">No</div>
