@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 class ProportionalStackedBarChart extends Component {
   componentDidMount() {
     window.addEventListener('scroll', () => {
+      const reactContainerOffset = document.querySelector('#react-container').offsetTop;
       const containerHeight = document.querySelector('#bar__personalizedResults--wrapper').getBoundingClientRect().bottom - document.querySelector('#bar__personalizedResults--wrapper').getBoundingClientRect().top;
       const containerPosition = document.querySelector('#bar__personalizedResults--wrapper').offsetTop + containerHeight;
 
-      if (window.scrollY > containerPosition - 130) {
+      if (window.scrollY > containerPosition + (reactContainerOffset - 130)) {
         document.querySelector('#bar__personalizedResults--container').classList.add('tacked');
       } else {
         document.querySelector('#bar__personalizedResults--container').classList.remove('tacked');
