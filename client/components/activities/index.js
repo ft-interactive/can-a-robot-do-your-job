@@ -11,6 +11,21 @@ class Activities extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('resetEvent', () => {
+      console.log('reset here');
+
+      const checkedBoxes = document.querySelectorAll('#activities-container .o-forms__checkbox[checked="checked"]');
+      Array.from(checkedBoxes).forEach((check) => {
+        check.removeAttribute('checked');
+      });
+
+      this.setState({
+        selectedActivities: {},
+      });
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     const activityKeys = Object.keys(nextProps.activities);
 

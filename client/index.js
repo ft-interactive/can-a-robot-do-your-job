@@ -111,7 +111,10 @@ class App extends Component {
   }
 
   clearOutChosenJob() {
-    // console.log('reset stuff');
+    console.log('reset stuff');
+
+    const resetEvent = new CustomEvent('resetEvent');
+    document.dispatchEvent(resetEvent);
 
     this.setState({
       chosenJobId: null,
