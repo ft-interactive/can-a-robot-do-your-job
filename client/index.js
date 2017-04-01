@@ -23,6 +23,7 @@ class App extends Component {
       jobsResults: {},
       personalizedResults: {},
       jobActivities: {},
+      loaded: false,
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -42,6 +43,7 @@ class App extends Component {
         this.setState({
           data,
           allOccupationsResults,
+          loaded: true,
         });
       });
 
@@ -165,14 +167,17 @@ class App extends Component {
       return null;
     };
 
-    return (
+    const fullRender = (
       <div className={(this.state.chosenJobId ? 'jobchosen' : null)}>
+        <h2 className="o-typography-subhead">Find your occupation:</h2>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
         <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
+
+    return (<div>{(this.state.loaded ? fullRender : 'Loading interactive...')}</div>);
   }
 }
 
