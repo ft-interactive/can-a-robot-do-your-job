@@ -18,17 +18,17 @@ class ProportionalStackedBarChart extends Component {
     const bars = this.props.data.map((d) => {
       const yesStyles = {
         left: 0,
-        width: `${((d.data.yes * 100) / d.data.numJobActivities)}%`,
+        width: (d.data.yes ? `${((d.data.yes * 100) / d.data.numJobActivities)}%` : 0),
       };
 
       const sometimesStyles = {
         left: `${((d.data.yes * 100) / d.data.numJobActivities)}%`,
-        width: `${((d.data.sometimes * 100) / d.data.numJobActivities)}%`,
+        width: (d.data.sometimes ? `${((d.data.sometimes * 100) / d.data.numJobActivities)}%` : 0),
       };
 
       const noStyles = {
         left: `${(((d.data.yes + d.data.sometimes) * 100) / d.data.numJobActivities)}%`,
-        width: `${((d.data.no * 100) / d.data.numJobActivities)}%`,
+        width: (d.data.no ? `${((d.data.no * 100) / d.data.numJobActivities)}%` : 0),
       };
 
       const barKey = (<div>
