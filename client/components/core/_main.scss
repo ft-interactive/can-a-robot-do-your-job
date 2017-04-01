@@ -155,7 +155,7 @@ $share-button-size: 38px;
       display: none;
     }
 
-    .loading {
+    &.loading {
       pointer-events: none;
       position: relative;
 
