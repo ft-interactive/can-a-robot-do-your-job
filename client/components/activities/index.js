@@ -57,7 +57,7 @@ class Activities extends Component {
 
   render() {
     const activities = this.state.transformedActivities.map((activity, i) => {
-      return (<fieldset className="o-forms" key={activity.key}>
+      return (<fieldset className="o-forms" key={`${this.props.chosenJobId}-${activity.key}`}>
         <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
         <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
@@ -77,6 +77,7 @@ class Activities extends Component {
 Activities.propTypes = {
   activities: React.PropTypes.object,
   updatePersonalActivitiesFunc: React.PropTypes.func,
+  chosenJobId: React.PropTypes.string,
 };
 
 export default Activities;
