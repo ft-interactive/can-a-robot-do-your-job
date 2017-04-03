@@ -156,7 +156,7 @@ class App extends Component {
         // const exampleJobsList = [this.state.exampleJobsList.slice(0, -1).join(', '), this.state.exampleJobsList.slice(-1)[0]].join(this.state.exampleJobsList.length < 2 ? '' : ' and ');
 
         return (<div id="resultOne">
-          <div>For this occupation,</div>
+          <div>For {this.state.chosenJobName.toLowerCase()},</div>
           <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
           <div>of {this.state.jobsResults.numJobActivities} activities</div>
           <div>could be done by a robot.</div>
