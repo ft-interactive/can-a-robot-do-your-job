@@ -52,6 +52,7 @@ class ProportionalStackedBarChart extends Component {
 
       return (<div className="bar-container" id={`bar__${d.key}--wrapper`} key={d.key}>
         <div id={`bar__${d.key}--container`}>
+          { d.key === 'personalizedResults' ? mobileKey : null }
           <div className="bar__label">
             <label htmlFor={`bar__${d.key}`}>{d.label}:</label>
             { (d.data.numJobActivities && d.key === 'personalizedResults' ? (<span id="myProgressNumber">of {d.data.numJobActivities} activities selected</span>) : null) }
@@ -62,7 +63,6 @@ class ProportionalStackedBarChart extends Component {
             <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles}>{d.key === 'personalizedResults' && (sometimesVal / numJobActivitiesVal) > 0.08 ? sometimesVal : null}</div>
             <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles}>{d.key === 'personalizedResults' && (noVal / numJobActivitiesVal) > 0.08 ? noVal : null}</div>
           </div>
-          { d.key === 'personalizedResults' ? mobileKey : null }
         </div>
       </div>);
     });

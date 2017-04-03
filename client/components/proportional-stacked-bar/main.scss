@@ -10,7 +10,8 @@
       box-sizing: border-box;
       top: 0;
       left: 0;
-      background: #fff1e0;
+      background: getColor('grey-tint4');
+      color: white;
       padding: 0.8em;
       overflow: hidden;
       z-index: 5;
@@ -27,6 +28,10 @@
 
       #mobileKey {
         display: block;
+      }
+
+      #myProgressNumber {
+        color: white;
       }
     }
 
@@ -69,15 +74,18 @@
 
       .bar-segment {
         position: absolute;
+        top: -1px;
         height: 100%;
         border: 1px solid white;
 
         &.bar-yes {
           background: getColor('claret-2');
+          color: #333;
         }
 
         &.bar-sometimes {
           background: getColor('yellow-tint1');
+          color: #333;
         }
 
         &.bar-no {
@@ -97,7 +105,7 @@
     }
 
     #mobileKey {
-      margin-top: 1em;
+      margin-bottom: 1em;
       display: none;
 
       span#mobileKey__label {
@@ -110,18 +118,21 @@
         display: inline-block;
         margin-right: 3px;
         padding: 5px;
+        font-weight: 600;
       }
 
       #mobileKey__yes {
-        border-top: 3px solid getColor('claret-2');
+        background: getColor('claret-2');
+        color: #333333;
       }
 
       #mobileKey__sometimes {
-        border-top: 3px solid getColor('yellow-tint1');
+        background: getColor('yellow-tint1');
+        color: #333333;
       }
 
       #mobileKey__no {
-        border-top: 3px solid #208c8f;
+        background: #208c8f;
       }
     }
   }
