@@ -57,6 +57,16 @@
 
   #activities-pagination {
     margin-top: 2em;
+
+    #paginationText {
+      display: inline-block;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      span#currentPage {
+        font-weight: 600;
+      }
+    }
   }
 
 }

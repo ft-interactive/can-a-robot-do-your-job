@@ -81,9 +81,12 @@ class Activities extends Component {
       </fieldset>);
     });
 
-    const paginationButtons = [...Array(Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)).keys()].map((i) => {
-      return (<button className="o-buttons o-buttons--big" key={`pagination-${i}`} data-pageNum={i} aria-pressed={(i === this.state.currentPage ? 'true' : 'false')} onClick={event => this.changePage(event.target)}>{i + 1}</button>);
-    });
+    // show a button for every page
+    // const paginationButtons = [...Array(Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)).keys()].map((i) => {
+    //   return (<button className="o-buttons o-buttons--big" key={`pagination-${i}`} data-pageNum={i} aria-pressed={(i === this.state.currentPage ? 'true' : 'false')} onClick={event => this.changePage(event.target)}>{i + 1}</button>);
+    // });
+
+    const paginationButtons = (<div id="paginationText">Page <span id="currentPage">{this.state.currentPage + 1}</span> of {Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}</div>);
 
     const pagination = (<div className="o-buttons__pagination" id="activities-pagination">
       <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" disabled={(this.state.currentPage === 0 ? 'disabled' : '')} onClick={() => this.decreasePage()}><span className="o-buttons-icon__label">Previous page</span></button>
