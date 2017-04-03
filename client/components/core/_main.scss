@@ -123,7 +123,14 @@ $share-button-size: 38px;
   box-sizing: content-box !important;
 }
 
-#methodology {
+.anchor {
+  position: absolute;
+  top: -190px;
+}
+
+#methodology-text {
+  position: relative;
+
   h4 {
     position: relative;
     font-size: 1.1em !important;
