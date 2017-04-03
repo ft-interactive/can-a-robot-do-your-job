@@ -22,6 +22,7 @@ class Activities extends Component {
 
       this.setState({
         selectedActivities: {},
+        currentPage: 0,
       });
     });
   }
@@ -76,7 +77,7 @@ class Activities extends Component {
   render() {
     const activities = this.state.transformedActivities.slice(this.state.currentPage * this.state.numPerPage, ((this.state.currentPage + 1) * this.state.numPerPage)).map((activity, i) => {
       return (<fieldset className="o-forms" key={`${this.props.chosenJobId}-${activity.key}`}>
-        <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
+        <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} checked={(activity.key in this.state.selectedActivities ? 'checked' : '')} onChange={event => this.updateSelectedActivities(event.target)} />
         <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
     });
