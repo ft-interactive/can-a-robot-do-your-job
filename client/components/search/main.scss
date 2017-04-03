@@ -1,3 +1,5 @@
+@import 'o-grid/main';
+
 #search-container {
   margin: 0 auto;
 
@@ -21,7 +23,12 @@
       min-width: 200px;
       font-size: 1em;
       max-width: 260px;
+
+      @include oGridRespondTo($until: S) {
+        max-width: 220px;
+      }
     }
+
   }
 
   .o-buttons {

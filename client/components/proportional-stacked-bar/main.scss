@@ -7,13 +7,14 @@
     .tacked {
       position: fixed;
       width: 100%;
+      box-sizing: border-box;
       top: 0;
       left: 0;
       background: #fff1e0;
-      padding: 1em;
-      border-bottom: 1px solid #cec6b9;
+      padding: 0.8em;
       overflow: hidden;
       z-index: 5;
+      box-shadow: 1px 1px 1px 1px rgba(176, 176, 176, 0.5);
 
       .bar__label,
       .bar,
@@ -60,6 +61,12 @@
         }
       }
 
+      &#bar__personalizedResults .bar-segment {
+        text-align: center;
+        line-height: 20px;
+        font-weight: 600;
+      }
+
       .bar-segment {
         position: absolute;
         height: 100%;
@@ -75,6 +82,7 @@
 
         &.bar-no {
           background: #208c8f;
+          color: white;
         }
 
       }
@@ -91,6 +99,12 @@
     #mobileKey {
       margin-top: 1em;
       display: none;
+
+      span#mobileKey__label {
+        font-family: Georgia;
+        font-size: 14px;
+        margin-right: 10px;
+      }
 
       .mobileKeyItem {
         display: inline-block;

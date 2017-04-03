@@ -11,6 +11,21 @@ class Activities extends Component {
     };
   }
 
+  componentDidMount() {
+    document.addEventListener('resetEvent', () => {
+      console.log('reset here');
+
+      const checkedBoxes = document.querySelectorAll('#activities-container .o-forms__checkbox[checked="checked"]');
+      Array.from(checkedBoxes).forEach((check) => {
+        check.removeAttribute('checked');
+      });
+
+      this.setState({
+        selectedActivities: {},
+      });
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     const activityKeys = Object.keys(nextProps.activities);
 
@@ -20,7 +35,7 @@ class Activities extends Component {
         automatable: true,
         details: nextProps.activities[activity],
       };
-    });
+    }).sort((a, b) => b.details.length - a.details.length);
 
     this.setState({
       activities: nextProps.activities,
@@ -42,7 +57,7 @@ class Activities extends Component {
 
   render() {
     const activities = this.state.transformedActivities.map((activity, i) => {
-      return (<fieldset className="o-forms">
+      return (<fieldset className="o-forms" key={`${this.props.chosenJobId}-${activity.key}`}>
         <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
         <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
@@ -74,8 +89,8 @@ class Activities extends Component {
 
 Activities.propTypes = {
   activities: React.PropTypes.object,
-  transformedActivities: React.PropTypes.array,
   updatePersonalActivitiesFunc: React.PropTypes.func,
+  chosenJobId: React.PropTypes.string,
 };
 
 export default Activities;

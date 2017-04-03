@@ -23,6 +23,7 @@ class App extends Component {
       jobsResults: {},
       personalizedResults: {},
       jobActivities: {},
+      loaded: false,
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -42,6 +43,7 @@ class App extends Component {
         this.setState({
           data,
           allOccupationsResults,
+          loaded: true,
         });
       });
 
@@ -111,7 +113,10 @@ class App extends Component {
   }
 
   clearOutChosenJob() {
-    // console.log('reset stuff');
+    console.log('reset stuff');
+
+    const resetEvent = new CustomEvent('resetEvent');
+    document.dispatchEvent(resetEvent);
 
     this.setState({
       chosenJobId: null,
@@ -146,12 +151,10 @@ class App extends Component {
 
     const resultOne = () => {
       if (this.state.chosenJobId) {
-        const exampleJobsList = `<b>${this.state.exampleJobsList.slice(0, -1).join('</b>, <b>')} and <b>${this.state.exampleJobsList.slice(-1)}</b>.`;
-
-        // const exampleJobsList = [this.state.exampleJobsList.slice(0, -1).join(', '), this.state.exampleJobsList.slice(-1)[0]].join(this.state.exampleJobsList.length < 2 ? '' : ' and ');
+        const exampleJobsList = `<span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(0, -1).join('</span>, <span class="resultone___exampleoccupations">')} and <span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(-1)}</span>.`;
 
         return (<div id="resultOne">
-          <div>For this occupation,</div>
+          <div>For {this.state.chosenJobName.toLowerCase()},</div>
           <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
           <div>of {this.state.jobsResults.numJobActivities} activities</div>
           <div>could be done by a robot.</div>
@@ -163,11 +166,14 @@ class App extends Component {
     };
 
     return (
-      <div className={(this.state.chosenJobId ? 'jobchosen' : null)}>
+      <div id="custom-react" className={`${(this.state.chosenJobId ? 'jobchosen' : '')} ${(this.state.loaded ? '' : 'loading')}`}>
+        <div id="overlay" />
+        <div className="loadingMessage">Loading interactive...</div>
+        <h2 className="o-typography-subhead">Find your occupation:</h2>
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
-        <Activities activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
+        <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
       </div>
     );
   }

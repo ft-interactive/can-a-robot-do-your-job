@@ -1,3 +1,5 @@
+@import 'o-grid/main';
+
 .jobchosen {
   #activities-container {
     opacity: 1;
@@ -10,6 +12,10 @@
 
   h2 {
     display: inline-block;
+
+    @include oGridRespondTo($until: S) {
+      max-width: 200px;
+    }
   }
 
   #activities-container__instructions {
@@ -38,12 +44,15 @@
     width:36px;
     height:36px;
     margin-top: 4px;
-    }
+  }
 
   .o-forms__label::after  {
+    background-color: getColor('grey-tint3');
+    background-image: url(https://www.ft.com/__origami/service/image/v2/images/raw/fticon-v1:tick?source=o-icons&tint=%23FFFFFF&format=svg);
     width:36px;
     height:36px;
     margin-top: 4px;
+    background-size: 36px;
   }
 
 }

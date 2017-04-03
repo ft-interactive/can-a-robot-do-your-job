@@ -28,6 +28,14 @@ class Search extends Component {
         this.getJobsList(majorGroupId);
         this.setJob(minorCategoryId);
 
+        if (document.querySelector('#dropdownIndustry option[selected="selected"]')) {
+          document.querySelector('#dropdownIndustry option[selected="selected"]').removeAttribute('selected');
+        }
+
+        if (document.querySelector('#dropdownOccupation option[selected="selected"]')) {
+          document.querySelector('#dropdownOccupation option[selected="selected"]').removeAttribute('selected');
+        }
+
         document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).setAttribute('selected', 'selected');
         document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).setAttribute('selected', 'selected');
       });
@@ -57,11 +65,11 @@ class Search extends Component {
 
   render() {
     const dropdownIndustry = this.state.industries.map((industry) => {
-      return (<option value={industry.id.split('-')[0]}>{industry.major_group_title}</option>);
+      return (<option key={industry.id.split('-')[0]} value={industry.id.split('-')[0]}>{industry.major_group_title}</option>);
     });
 
     const dropdownOccupation = this.state.jobs.map((job) => {
-      return (<option value={job.id}>{job.minor_group_title}</option>);
+      return (<option key={job.id} value={job.id}>{job.minor_group_title}</option>);
     });
 
     return (
