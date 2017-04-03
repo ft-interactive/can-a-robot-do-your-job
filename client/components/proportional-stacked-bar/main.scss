@@ -61,6 +61,12 @@
         }
       }
 
+      &#bar__personalizedResults .bar-segment {
+        text-align: center;
+        line-height: 20px;
+        font-weight: 600;
+      }
+
       .bar-segment {
         position: absolute;
         height: 100%;
@@ -76,6 +82,7 @@
 
         &.bar-no {
           background: #208c8f;
+          color: white;
         }
 
       }

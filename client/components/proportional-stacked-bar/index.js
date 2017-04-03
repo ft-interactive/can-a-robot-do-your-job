@@ -58,9 +58,9 @@ class ProportionalStackedBarChart extends Component {
             { d.key === 'allOccupationsResults' ? barKey : null }
           </div>
           <div id={`bar__${d.key}`} className="bar">
-            <div id={`bar__${d.key}-yes`} className="bar-segment bar-yes" style={yesStyles} />
-            <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles} />
-            <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles} />
+            <div id={`bar__${d.key}-yes`} className="bar-segment bar-yes" style={yesStyles}>{d.key === 'personalizedResults' && (yesVal / numJobActivitiesVal) > 0.08 ? yesVal : null}</div>
+            <div id={`bar__${d.key}-sometimes`} className="bar-segment bar-sometimes" style={sometimesStyles}>{d.key === 'personalizedResults' && (sometimesVal / numJobActivitiesVal) > 0.08 ? sometimesVal : null}</div>
+            <div id={`bar__${d.key}-no`} className="bar-segment bar-no" style={noStyles}>{d.key === 'personalizedResults' && (noVal / numJobActivitiesVal) > 0.08 ? noVal : null}</div>
           </div>
           { d.key === 'personalizedResults' ? mobileKey : null }
         </div>
