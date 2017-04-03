@@ -8,7 +8,13 @@ class Activities extends Component {
       activities: {},
       transformedActivities: [],
       selectedActivities: {},
+      currentPage: 0,
+      numPerPage: 8,
     };
+
+    this.changePage = this.changePage.bind(this);
+    this.decreasePage = this.decreasePage.bind(this);
+    this.increasePage = this.increasePage.bind(this);
   }
 
   componentDidMount() {
@@ -49,24 +55,40 @@ class Activities extends Component {
     this.props.updatePersonalActivitiesFunc(this.state.selectedActivities);
   }
 
+  changePage(pageNum) {
+    this.setState({
+      currentPage: parseInt(pageNum.getAttribute('data-pageNum'), 10),
+    });
+  }
+
+  decreasePage() {
+    this.setState({
+      currentPage: this.state.currentPage - 1,
+    });
+  }
+
+  increasePage() {
+    this.setState({
+      currentPage: this.state.currentPage + 1,
+    });
+  }
+
   render() {
-    const activities = this.state.transformedActivities.map((activity, i) => {
+    const activities = this.state.transformedActivities.slice(this.state.currentPage * this.state.numPerPage, ((this.state.currentPage + 1) * this.state.numPerPage)).map((activity, i) => {
       return (<fieldset className="o-forms" key={`${this.props.chosenJobId}-${activity.key}`}>
         <input type="checkbox" name={`checkbox${i}`} value={activity.key} className="o-forms__checkbox" id={`checkbox${i}`} onChange={event => this.updateSelectedActivities(event.target)} />
         <label htmlFor={`checkbox${i}`} className="o-forms__label"><p>{activity.key}</p></label>
       </fieldset>);
     });
 
-    const pagination = (<div className="o-buttons__pagination">
-      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" disabled><span className="o-buttons-icon__label">Fewer results</span></button>
-      <button className="o-buttons o-buttons--big" aria-pressed="true">1</button>
-      <button className="o-buttons o-buttons--big">2</button>
-      <button className="o-buttons o-buttons--big">3</button>
-      <span className="faux-inline-block"> ... </span>
-      <button className="o-buttons o-buttons--big">25</button>
-      <button className="o-buttons o-buttons--big">26</button>
-      <button className="o-buttons o-buttons--big">27</button>
-      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-right o-buttons-icon--icon-only"><span className="o-buttons-icon__label">More results</span></button>
+    const paginationButtons = [...Array(Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)).keys()].map((i) => {
+      return (<button className="o-buttons o-buttons--big" key={`pagination-${i}`} data-pageNum={i} aria-pressed={(i === this.state.currentPage ? 'true' : 'false')} onClick={event => this.changePage(event.target)}>{i + 1}</button>);
+    });
+
+    const pagination = (<div className="o-buttons__pagination" id="activities-pagination">
+      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" disabled={(this.state.currentPage === 0 ? 'disabled' : '')} onClick={() => this.decreasePage()}><span className="o-buttons-icon__label">Previous page</span></button>
+      {paginationButtons}
+      <button className="o-buttons o-buttons--big o-buttons-icon o-buttons-icon--arrow-right o-buttons-icon--icon-only" disabled={(this.state.currentPage === (Math.ceil(this.state.transformedActivities.length / this.state.numPerPage) - 1) ? 'disabled' : '')} onClick={() => this.increasePage()}><span className="o-buttons-icon__label">Next page</span></button>
     </div>);
 
     return (
@@ -75,7 +97,7 @@ class Activities extends Component {
         <h2 className="o-typography-heading2">Which activities do you do?</h2>
         <p id="activities-container__instructions" />
         {activities}
-        {pagination}
+        {(this.state.transformedActivities.length > 0 ? pagination : null)}
       </div>
     );
   }
