@@ -9,4 +9,13 @@
   <div id="react-container"><div class="loadingMessage">Loading interactive...</div></div>
 </div>
 
+<div id="main-text">
+  {{ text.text | md }}
+</div>
+
+<div id="methodology">
+  <h4>Methodology</h4>
+  {{ text.methodology | md }}
+</div>
+
 {% endblock %}

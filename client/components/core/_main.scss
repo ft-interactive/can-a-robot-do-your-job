@@ -123,6 +123,29 @@ $share-button-size: 38px;
   box-sizing: content-box !important;
 }
 
+#methodology {
+  h4 {
+    position: relative;
+    font-size: 1.1em !important;
+    margin: 1em auto 1.5em;
+    font-family: MetricWeb, sans-serif;
+    line-height: 22px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: .25em;
+      border-top: 0.24em solid #333;
+      width: 10%;
+      bottom: -0.8em;
+      left: 0;
+    }
+  }
+}
+
 #react-container {
   position: relative;
   min-height: 100px;
