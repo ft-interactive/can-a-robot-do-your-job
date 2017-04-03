@@ -38,8 +38,8 @@ export default () => ({ // eslint-disable-line
   // if array of authors, url is optional
   byline: [
     { name: 'Robin Kwong', url: 'https://www.ft.com/stream/authorsId/Q0ItZGIwM2YzMg==-QXV0aG9ycw==' },
-    { name: 'Joanna Kao', url: 'https://www.ft.com/joanna-kao' },
-    { name: 'Claire Manibog', url: 'https://www.ft.com/claire-manibog' },
+    { name: 'Joanna S Kao', url: 'https://www.ft.com/stream/authorsId/NWRlMDQ0Y2MtODA3Mi00N2VlLWEyZGItNWRmYTZhNDNiNWNi-QXV0aG9ycw==' },
+    { name: 'Claire Manibog', url: 'https://www.ft.com/stream/authorsId/ZGVhNjk2NmEtN2ZkNy00NDllLTkyODAtYjE2NWNmNjg0NTcx-QXV0aG9ycw==' },
   ],
 
   // Appears in the HTML <title>
