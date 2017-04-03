@@ -143,7 +143,7 @@ class App extends Component {
         label: this.state.chosenJobName || 'Your occupation',
         data: this.state.jobsResults },
       { key: 'personalizedResults',
-        label: 'Me',
+        label: 'Activities you do',
         data: this.state.personalizedResults },
     ];
 
@@ -156,7 +156,7 @@ class App extends Component {
           <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
           <div>of {this.state.jobsResults.numJobActivities} activities</div>
           <div>could be done by a robot.</div>
-          <div id="resultOne__top3">This category includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /></div>
+          <div id="resultOne__top3">This group includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /></div>
           <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
         </div>);
       }
