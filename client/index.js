@@ -151,9 +151,7 @@ class App extends Component {
 
     const resultOne = () => {
       if (this.state.chosenJobId) {
-        const exampleJobsList = `<b>${this.state.exampleJobsList.slice(0, -1).join('</b>, <b>')} and <b>${this.state.exampleJobsList.slice(-1)}</b>.`;
-
-        // const exampleJobsList = [this.state.exampleJobsList.slice(0, -1).join(', '), this.state.exampleJobsList.slice(-1)[0]].join(this.state.exampleJobsList.length < 2 ? '' : ' and ');
+        const exampleJobsList = `<span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(0, -1).join('</span>, <span class="resultone___exampleoccupations">')} and <span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(-1)}</span>.`;
 
         return (<div id="resultOne">
           <div>For {this.state.chosenJobName.toLowerCase()},</div>
