@@ -1,3 +1,5 @@
+@import 'o-grid/main';
+
 $font-sans: MetricWeb, sans-serif;
 $font-serif: Georgia, serif;
 $font-display: FinancierDisplayWeb, Georgia, serif;
@@ -90,8 +92,29 @@ $share-button-size: 38px;
   }
 }
 
-.graphic {
+.o-typography-link-topic--medium {
+  @include oGridRespondTo($until: S) {
+    font-size: 16px;
+  }
+}
 
+.o-typography-heading1 {
+  @include oGridRespondTo($until: S) {
+    font-size: 26px;
+    line-height: 31px;
+    // margin: 0 0 20px;
+  }
+}
+
+.o-typography-lead {
+  @include oGridRespondTo($until: S) {
+    font-size: 18px;
+    line-height: 1.2em;
+    opacity: 0.8;
+  }
+}
+
+.graphic {
   display: block;
   max-width: 100%;
   margin: 0 auto;
