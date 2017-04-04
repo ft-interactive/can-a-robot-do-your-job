@@ -148,16 +148,27 @@ class App extends Component {
         data: this.state.personalizedResults },
     ];
 
+    // like toLowerCase() except with some exceptions
+    const customToLowerCase = (phrase) => {
+      const exceptions = ['HR Assistants'];
+      if (exceptions.indexOf(phrase) > -1) {
+        if (phrase === 'HR Assistants') return 'HR assistants';
+        return phrase;
+      }
+      return phrase.toLowerCase();
+    };
+
     const resultOne = () => {
       if (this.state.chosenJobId) {
-        const exampleJobsList = `<span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(0, -1).join('</span>, <span class="resultone___exampleoccupations">')} and <span class="resultone___exampleoccupations">${this.state.exampleJobsList.slice(-1)}</span>.`;
+        const exampleJobsListState = this.state.exampleJobsList.map(d => customToLowerCase(d));
+        const exampleJobsList = `<span class="resultone___exampleoccupations">${exampleJobsListState.slice(0, -1).join('</span>, <span class="resultone___exampleoccupations">')} and <span class="resultone___exampleoccupations">${exampleJobsListState.slice(-1)}</span>.`;
 
         return (<div id="resultOne">
           <div>For {this.state.chosenJobName.toLowerCase()},</div>
           <span id="resultOne__bigNumber">{this.state.jobsResults.yes}</span>
           <div>of {this.state.jobsResults.numJobActivities} activities</div>
           <div>could be done by a robot.</div>
-          <div id="resultOne__top3">This group includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList.toLowerCase() }} /></div>
+          <div id="resultOne__top3">This group includes jobs such as <span dangerouslySetInnerHTML={{ __html: exampleJobsList }} /></div>
           <div className="resultOne__methodology"><a href="#methodology">Read the methodology</a></div>
         </div>);
       }
