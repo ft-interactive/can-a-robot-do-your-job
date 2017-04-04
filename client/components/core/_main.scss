@@ -166,6 +166,10 @@ $share-button-size: 38px;
 
   #top_illo {
     text-align: center;
+
+    img {
+      width: 100%;
+    }
   }
 
   .loadingMessage {
