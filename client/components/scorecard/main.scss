@@ -1,0 +1,72 @@
+@import 'o-grid/main';
+
+.jobchosen {
+  #scorecard-container {
+    opacity: 1;
+  }
+}
+
+#scorecard-container {
+  margin-left: 10px;
+  opacity: 0.2;
+
+  h2 {
+    display: inline-block;
+
+    @include oGridRespondTo($until: S) {
+      max-width: 200px;
+    }
+  }
+
+  #scorecard__score {
+    display: block;
+
+    @include oGridRespondTo($until: S) {
+      font-size: 0.9em;
+    }
+
+    img {
+      max-width: 100px;
+
+      @include oGridRespondTo($until: S) {
+        max-width: 30px;
+      }
+    }
+
+    #scorecard__score-text {
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 30px;
+
+      @include oGridRespondTo($until: S) {
+        margin-left: 20px;
+        max-width: 205px;
+      }
+
+      #scorecard__stats {
+        font-size: 3em;
+        font-weight: 200;
+      }
+
+      #scorecard__line2 {
+        font-size: 1.3em;
+        width: 100%;
+        max-width: 200px;
+        color: #777777;
+      }
+
+      #scorecard__verdict {
+        margin-top: 20px;
+        font-size: 1em;
+        width: 100%;
+        max-width: 200px;
+
+        #scorecard__verdict-label {
+          font-weight: 600;
+        }
+      }
+    }
+
+  }
+
+}

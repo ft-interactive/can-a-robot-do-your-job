@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import Search from './components/search';
 import ProportionalStackedBarChart from './components/proportional-stacked-bar';
 import Activities from './components/activities';
+import Scorecard from './components/scorecard';
 
 class App extends Component {
   constructor(props) {
@@ -172,7 +173,8 @@ class App extends Component {
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
         <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
-      </div>
+        <Scorecard chosenJobName={this.state.chosenJobName} score={this.state.personalizedResults}/>
+    </div>
     );
   }
 }
