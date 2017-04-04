@@ -29,7 +29,7 @@
       max-width: 100px;
 
       @include oGridRespondTo($until: S) {
-        max-width: 30px;
+        display: none;
       }
     }
 
@@ -39,8 +39,7 @@
       margin-left: 30px;
 
       @include oGridRespondTo($until: S) {
-        margin-left: 20px;
-        max-width: 205px;
+        margin-left: 44px;
       }
 
       #scorecard__stats {
