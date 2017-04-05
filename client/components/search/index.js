@@ -36,8 +36,8 @@ class Search extends Component {
           document.querySelector('#dropdownOccupation option[selected="selected"]').removeAttribute('selected');
         }
 
-        document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).setAttribute('selected', 'selected');
-        document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).setAttribute('selected', 'selected');
+        document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).selected = true;
+        document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).selected = true;
       });
     });
   }
