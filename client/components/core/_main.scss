@@ -160,6 +160,34 @@ $share-button-size: 38px;
   top: -190px;
 }
 
+#example-jobs {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 2em 0 1em 0;
+
+  .example-jobs-container {
+    width: 50%;
+    display: inline-block;
+
+    &:first-of-type {
+      padding-right: 10px;
+    }
+
+    .example-jobs-container__label {
+      font-weight: 600;
+      font-size: 1.125em;
+    }
+
+    ul {
+      font-family: $font-sans;
+    }
+
+    li {
+
+    }
+  }
+}
+
 #methodology-text {
   position: relative;
 

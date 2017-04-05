@@ -10,7 +10,28 @@
 </div>
 
 <div id="main-text">
-  {{ text.text | md }}
+  {{ text.text1 | md }}
+  <div id="example-jobs" class="o-grid-container--bleed">
+    <div class="o-grid-row">
+      <div class="example-jobs-container" id="example-jobs__automatable" data-o-grid-colspan="S6 12">
+        <div class="example-jobs-container__label">Jobs that can be fully automated</div>
+        <ul>
+          <li>Meat packers</li>
+          <li>Plasterers and stucco masons</li>
+          <li>Ophthalmic lab technicians</li>
+        </ul>
+      </div>
+      <div class="example-jobs-container" id="example-jobs__not-automatable" data-o-grid-colspan="S6 12">
+        <div class="example-jobs-container__label">Jobs with no automatable activities</div>
+        <ul>
+          <li>Historians</li>
+          <li>Mining roof bolters</li>
+          <li>Clergy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {{ text.text2 | md }}
 </div>
 
 <div id="methodology-text">
