@@ -68,6 +68,10 @@
   }
 
   #scorecard__share {
+    @include oGridRespondTo($until: S) {
+      margin-left: 44px;
+    }
+
     #scorecard__share-label {
       margin: 1em 10px 1em 0;
       font-size: 1.3em;
