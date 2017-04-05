@@ -7,10 +7,47 @@ class Scorecard extends Component {
 
     let verdict = 'Tell us what activities you do above to get your score.';
     if (numJobActivitiesVal > 0) {
-      if ((yesVal / numJobActivitiesVal) > 0.5) {
-        verdict = 'Time to retrain?';
-      } else {
-        verdict = 'You might be safe... for now.';
+
+      // exactly one selected
+      if (numJobActivitiesVal === 1) {
+        if (yesVal === 1) { // exactly one selected + yes
+          verdict = 'You had one job.';
+        } else { // exactly one selected + not yes
+          verdict = 'You have one job.';
+        }
+      }
+
+      // 2-5 selected
+      if (numJobActivitiesVal >= 2 && numJobActivitiesVal <= 5) {
+        verdict = '“Variety is the spice of life!”';
+      }
+
+      // more than 5 to 20 selected
+      if (numJobActivitiesVal > 5 && numJobActivitiesVal <= 20) {
+        if (yesVal === 0) {
+          verdict = 'Your job is fully robot-proof.';
+        } else {
+          if ((yesVal / numJobActivitiesVal) < 0.25) {
+            verdict = '“Our inventions are wont to be pretty toys, which distract our attention from serious things.” - Henry David Thoreau';
+          }
+
+          if ((yesVal / numJobActivitiesVal) >= 0.25 && (yesVal / numJobActivitiesVal) <= 0.75) {
+            verdict = '“Focus is a matter of deciding what things you\'re not going to do.” - John Carmack';
+          }
+
+          if ((yesVal / numJobActivitiesVal) > 0.75) {
+            verdict = '“It is during our darkest moments that we must focus to see the light” - Aristotle';
+          }
+
+          if (yesVal === numJobActivitiesVal) {
+            verdict = 'Time to retrain?';
+          }
+        }
+      }
+
+      // if more than 20 activities selected
+      if (numJobActivitiesVal > 20) {
+        verdict = '“If you chase two rabbits, both will escape.”';
       }
     }
 
