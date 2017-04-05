@@ -66,10 +66,19 @@ class Scorecard extends Component {
       </div>
     </div>);
 
+    const tweetText = `${yesVal} out of ${numJobActivitiesVal} of my work activities could be automated. Find out robot-proof your job is: https://ig.ft.com/can-a-robot-do-your-job/`;
+    const tweetURL = `https://twitter.com/home?status=${tweetText}`;
+
+    const scorecardShare = (<div id="scorecard__share">
+      <div id="scorecard__share-label">Share your score</div>
+      <a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet</button></a>
+    </div>);
+
     return (<div id="scorecard-container">
       <div className="step-number o-forms__prefix">4</div>
       <h2 className="o-typography-heading2">How robot-proof is your job?</h2>
       {(this.props.chosenJobName ? scorecardScore : null)}
+      {(this.props.chosenJobName ? scorecardShare : null)}
     </div>
     );
   }

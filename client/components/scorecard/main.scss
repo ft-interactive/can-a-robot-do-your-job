@@ -65,7 +65,15 @@
         }
       }
     }
+  }
 
+  #scorecard__share {
+    #scorecard__share-label {
+      margin: 1em 10px 1em 0;
+      font-size: 1.3em;
+      color: getColor('grey-tint3');
+      display: inline-block;
+    }
   }
 
 }
