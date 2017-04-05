@@ -64,7 +64,7 @@ export default () => ({ // eslint-disable-line
   // General social
   socialImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2F553de71a-1a2c-11e7-bcac-6d03d067f81f.img?source=ig&width=1200',
   socialHeadline: 'Here’s how much of your job can be done by a robot',
-  socialSummary: 'Find out how much of your job can technically be automated.',
+  // socialSummary: '',
 
   // TWITTER
   twitterImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2F553de71a-1a2c-11e7-bcac-6d03d067f81f.img?source=ig&width=1200',
