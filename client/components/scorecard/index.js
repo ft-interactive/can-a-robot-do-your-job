@@ -18,35 +18,35 @@ class Scorecard extends Component {
 
       // 2-5 selected
       if (numJobActivitiesVal >= 2 && numJobActivitiesVal <= 5) {
-        verdict = '“Variety is the spice of life!”';
+        verdict = 'Remember: “Variety is the spice of life!”';
       }
 
       // more than 5 to 20 selected
       if (numJobActivitiesVal > 5 && numJobActivitiesVal <= 20) {
         if (yesVal === 0) {
-          verdict = 'Your job is fully robot-proof.';
+          verdict = 'Congratulations! Your job is fully robot-proof.';
         } else {
           if ((yesVal / numJobActivitiesVal) < 0.25) {
-            verdict = '“Our inventions are wont to be pretty toys, which distract our attention from serious things.” Henry David Thoreau';
+            verdict = 'That\'s pretty good! Your job is mostly robot-proof.';
           }
 
           if ((yesVal / numJobActivitiesVal) >= 0.25 && (yesVal / numJobActivitiesVal) <= 0.75) {
-            verdict = '“Focus is a matter of deciding what things you\'re not going to do.” John Carmack';
+            verdict = 'As Steve Jobs said, “Innovation is saying no to 1,000 things.”';
           }
 
           if ((yesVal / numJobActivitiesVal) > 0.75) {
-            verdict = '“It is during our darkest moments that we must focus to see the light.” Aristotle';
+            verdict = '“Only those who constantly retool themselves stand a chance of staying employed in the years ahead.” Tom Peters';
           }
 
           if (yesVal === numJobActivitiesVal) {
-            verdict = 'Time to retrain?';
+            verdict = '“Hasta la vista, baby!”';
           }
         }
       }
 
       // if more than 20 activities selected
       if (numJobActivitiesVal > 20) {
-        verdict = '“If you chase two rabbits, both will escape.”';
+        verdict = '“It is possible to be very busy without being very effective.” Stephen Covey';
       }
     }
 
