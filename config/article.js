@@ -55,26 +55,26 @@ export default () => ({ // eslint-disable-line
         Twitter card docs:
         https://dev.twitter.com/cards/markup
   */
-  twitterCard: 'summary',
+  twitterCard: 'summary_large_image',
 
   /*
   TODO: Do you want to tweak any of the
         optional social meta data?
   */
   // General social
-  // socialImage: '',
-  // socialHeadline: '',
-  // socialSummary:  '',
+  socialImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2F553de71a-1a2c-11e7-bcac-6d03d067f81f.img?source=ig&width=1200',
+  socialHeadline: 'Here’s how much of your job can be done by a robot',
+  socialSummary: 'Find out how much of your job can technically be automated.',
 
   // TWITTER
-  // twitterImage: '',
+  twitterImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2F553de71a-1a2c-11e7-bcac-6d03d067f81f.img?source=ig&width=1200',
   // twitterCreator: '@individual's_account',
-     tweetText:  'Here’s how much of your job can be done by a robot',
-  // twitterHeadline:  '',
+  tweetText: 'Here’s how much of your job can be done by a robot',
+  twitterHeadline: 'Can a robot do your job?',
 
   // FACEBOOK
-  // facebookImage: '',
-     facebookHeadline: 'Can a robot do your job?',
+  facebookImage: 'https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fim.ft-static.com%2Fcontent%2Fimages%2F553de71a-1a2c-11e7-bcac-6d03d067f81f.img?source=ig&width=1200',
+  facebookHeadline: 'Can a robot do your job?',
 
   tracking: {
 
