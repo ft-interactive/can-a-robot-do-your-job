@@ -139,6 +139,15 @@ $share-button-size: 38px;
 
 }
 
+.n-util-visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .enhanced .o-date {opacity: 0;}
 .enhanced.js-success .o-date {opacity: 1;}
 

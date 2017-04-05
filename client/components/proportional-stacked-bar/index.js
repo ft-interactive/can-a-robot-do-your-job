@@ -50,7 +50,7 @@ class ProportionalStackedBarChart extends Component {
         <div className="mobileKeyItem" id="mobileKey__no">No</div>
       </div>);
 
-      return (<div className="bar-container" id={`bar__${d.key}--wrapper`} key={d.key}>
+      return (<div className="bar-container" id={`bar__${d.key}--wrapper`} key={d.key} role="presentation" aria-hidden="true">
         <div id={`bar__${d.key}--container`}>
           { d.key === 'personalizedResults' ? mobileKey : null }
           <div className="bar__label">
@@ -67,8 +67,29 @@ class ProportionalStackedBarChart extends Component {
       </div>);
     });
 
+    // visually hidden HTML table to display results
+    const barsTable = (<table id="bar__table" className="n-util-visually-hidden" aria-live="polite" role="status" aria-atomic="true" aria-relevant="all">
+      <thead>
+        <tr>
+          <th scope="col">Could a robot do this?</th>
+          <th scope="col">Yes</th>
+          <th scope="col">Sometimes</th>
+          <th scope="col">No</th>
+        </tr>
+      </thead>
+      <tbody>
+        { this.props.data.reverse().map(d => <tr key={`bar__table--${d.label}--row`}>
+          <th scope="row" key={`bar__table--${d.label}--row--label`}>{d.label}</th>
+          <td key={`bar__table--${d.label}--row--yes`}>{d.data.yes || 0}</td>
+          <td key={`bar__table--${d.label}--row--sometimes`}>{d.data.sometimes || 0}</td>
+          <td key={`bar__table--${d.label}--row--no`}>{d.data.no || 0}</td>
+        </tr>) }
+      </tbody>
+    </table>);
+
     return (
       <div id="bar-wrapper">
+        {barsTable}
         {bars}
       </div>
     );
