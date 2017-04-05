@@ -96,7 +96,7 @@ class Activities extends Component {
     </div>);
 
     return (
-      <div id="activities-container">
+      <div id="activities-container" aria-disabled={(this.props.chosenJobId ? 'false' : 'true')}>
         <div className="step-number o-forms__prefix">3</div>
         <h2 className="o-typography-heading2">Which activities do you do?</h2>
         <p id="activities-container__instructions" />

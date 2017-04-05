@@ -74,7 +74,7 @@ class Scorecard extends Component {
       <a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet</button></a>
     </div>);
 
-    return (<div id="scorecard-container">
+    return (<div id="scorecard-container" aria-disabled={(this.props.chosenJobName ? 'false' : 'true')}>
       <div className="step-number o-forms__prefix">4</div>
       <h2 className="o-typography-heading2">How robot-proof is your job?</h2>
       {(this.props.chosenJobName ? scorecardScore : null)}
