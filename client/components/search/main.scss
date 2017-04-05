@@ -32,15 +32,19 @@
   }
 
   .o-buttons {
-    background-color:#a7a59b;
-    color:#ffffff;
-    border:none;
-    border-radius:3px;
+    background-color: getColor('pink-tint4');
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
     font-size: 16px;
     margin-bottom: 5px;
 
     &[data-id="random"]{
-      background-color:#936971;
+      background-color: getColor('purple-tint1');
+    }
+
+    &:focus {
+      box-shadow: inset 0 0 4px 1px rgba(80,80,80,.7);
     }
   }
 }
