@@ -5,9 +5,8 @@ class Scorecard extends Component {
     const yesVal = this.props.score.yes || 0;
     const numJobActivitiesVal = this.props.score.numJobActivities || 0;
 
-    let verdict = 'Tell us what activities you do above to get your score.';
+    let verdict = 'Tell us what activities you do to get your score.';
     if (numJobActivitiesVal > 0) {
-
       // exactly one selected
       if (numJobActivitiesVal === 1) {
         if (yesVal === 1) { // exactly one selected + yes
@@ -28,15 +27,15 @@ class Scorecard extends Component {
           verdict = 'Your job is fully robot-proof.';
         } else {
           if ((yesVal / numJobActivitiesVal) < 0.25) {
-            verdict = '“Our inventions are wont to be pretty toys, which distract our attention from serious things.” - Henry David Thoreau';
+            verdict = '“Our inventions are wont to be pretty toys, which distract our attention from serious things.” Henry David Thoreau';
           }
 
           if ((yesVal / numJobActivitiesVal) >= 0.25 && (yesVal / numJobActivitiesVal) <= 0.75) {
-            verdict = '“Focus is a matter of deciding what things you\'re not going to do.” - John Carmack';
+            verdict = '“Focus is a matter of deciding what things you\'re not going to do.” John Carmack';
           }
 
           if ((yesVal / numJobActivitiesVal) > 0.75) {
-            verdict = '“It is during our darkest moments that we must focus to see the light” - Aristotle';
+            verdict = '“It is during our darkest moments that we must focus to see the light.” Aristotle';
           }
 
           if (yesVal === numJobActivitiesVal) {
@@ -53,7 +52,7 @@ class Scorecard extends Component {
 
     const verdictStyle = {
       visibility: (numJobActivitiesVal > 0 ? 'visible' : 'hidden'),
-    }
+    };
 
     const scorecardScore = (<div id="scorecard__score">
       <img src="./images/robot.jpg" alt="" />
