@@ -9,6 +9,18 @@
 #scorecard-container {
   margin-left: 10px;
   opacity: 0.2;
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+  padding-bottom: 0;
+  border: 1px solid #e9decf;
+  background: #fbf9f7;
+
+  #scorecard__contents {
+    margin: 0 auto;
+  }
 
   h2 {
     display: inline-block;
