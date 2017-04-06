@@ -18,9 +18,9 @@ class Search extends Component {
 
   componentDidMount() {
     const presetButtons = document.querySelectorAll('#preset-button-container button');
-    Array.from(presetButtons).forEach((elements) => {
-      elements.addEventListener('click', () => {
-        let minorCategoryId = elements.getAttribute('data-id');
+    Array.from(presetButtons).forEach((element) => {
+      element.addEventListener('click', () => {
+        let minorCategoryId = element.getAttribute('data-id');
         if (minorCategoryId === 'random') {
           minorCategoryId = this.state.occupations[Math.floor(Math.random() * this.state.occupations.length)].id;
         }
