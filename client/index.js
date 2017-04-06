@@ -9,6 +9,8 @@ import ProportionalStackedBarChart from './components/proportional-stacked-bar';
 import Activities from './components/activities';
 import Scorecard from './components/scorecard';
 
+import gaSendEvent from './components/core/ga-analytics';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,10 @@ class App extends Component {
       personalizedResults: {},
       jobActivities: {},
       loaded: false,
+      totalActivitiesCheckedOnPage: 0,
+      totalJobsChosenOnPage: 0,
+      scrolledPastText: false,
+      scrolledPastMethodology: false,
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -63,6 +69,30 @@ class App extends Component {
           occupations: d3.csvParse(response.data),
         });
       });
+
+    // send events on page unload
+    const unloadEventName = ('onbeforeunload' in window) ? 'beforeunload' : 'unload';
+    window.addEventListener(unloadEventName, () => {
+      gaSendEvent('page-total', 'totalActivities', this.state.totalActivitiesCheckedOnPage + (this.state.personalizedResults.numJobActivities || 0));
+      gaSendEvent('page-total', 'totalJobsChosen', this.state.totalJobsChosenOnPage);
+      gaSendEvent('scroll', 'text', this.state.scrolledPastText);
+      gaSendEvent('scroll', 'methodology', this.state.scrolledPastMethodology);
+    });
+
+    const dividerDiv = document.querySelector('#divider');
+    const methodologyDiv = document.querySelector('#methodology');
+    window.addEventListener('scroll', () => {
+      if (dividerDiv.getBoundingClientRect().top <= 0) {
+        this.setState({
+          scrolledPastText: true,
+        });
+      }
+      if (methodologyDiv.getBoundingClientRect().top <= 0) {
+        this.setState({
+          scrolledPastMethodology: true,
+        });
+      }
+    });
   }
 
   getActivityResultNumbers(jobActivities) {
@@ -110,6 +140,7 @@ class App extends Component {
       exampleJobsList,
       jobsResults,
       jobActivities,
+      totalJobsChosenOnPage: this.state.totalJobsChosenOnPage + 1,
     });
   }
 
@@ -124,6 +155,7 @@ class App extends Component {
       jobsResults: {},
       jobActivities: {},
       personalizedResults: {},
+      totalActivitiesCheckedOnPage: (this.state.totalActivitiesCheckedOnPage || 0) + (this.state.personalizedResults.numJobActivities || 0),
     });
   }
 
@@ -183,7 +215,7 @@ class App extends Component {
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
-        <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
+        <Activities chosenJobId={this.state.chosenJobId} chosenJobName={this.state.chosenJobName} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
         <Scorecard chosenJobName={this.state.chosenJobName} score={this.state.personalizedResults}/>
     </div>
     );

@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
+import gaSendEvent from '../core/ga-analytics';
 
 class Scorecard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.tweetScore = this.tweetScore.bind(this);
+  }
+
+  tweetScore() {
+    const eventCategory = this.props.chosenJobName;
+    const eventLabel = `${this.props.score.yes || 0}-${this.props.score.numJobActivities || 0}`;
+    gaSendEvent(eventCategory, 'dynamicShare', eventLabel);
+  }
+
   render() {
     const yesVal = this.props.score.yes || 0;
     const numJobActivitiesVal = this.props.score.numJobActivities || 0;
@@ -70,7 +83,7 @@ class Scorecard extends Component {
     const tweetURL = `https://twitter.com/home?status=${tweetText}`;
 
     const scorecardShare = (<div id="scorecard__share">
-      <div id="scorecard__share-label"><a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet your score</button></a></div>
+      <div id="scorecard__share-label"><a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout" onClick={() => this.tweetScore()}>Tweet your score</button></a></div>
     </div>);
 
     const scorecardContainer = (<div id="scorecard-container" aria-disabled={(this.props.chosenJobName ? 'false' : 'true')}>

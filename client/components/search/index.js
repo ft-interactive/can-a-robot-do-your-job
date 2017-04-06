@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import * as d3 from 'd3';
+import gaSendEvent from '../core/ga-analytics';
 
 class Search extends Component {
   constructor(props) {
@@ -38,7 +37,22 @@ class Search extends Component {
 
         document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).selected = true;
         document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).selected = true;
+
+        const buttonText = element.textContent || element.innerText;
+        gaSendEvent('exampleButton', 'click', buttonText);
       });
+    });
+
+    document.querySelector('#dropdownIndustry').addEventListener('change', () => {
+      const dropdown = document.querySelector('#dropdownIndustry');
+      const chosenIndustry = dropdown.options[dropdown.selectedIndex].text;
+      gaSendEvent('dropdown', 'category', chosenIndustry);
+    });
+
+    document.querySelector('#dropdownOccupation').addEventListener('change', () => {
+      const dropdown = document.querySelector('#dropdownOccupation');
+      const chosenOccupation = dropdown.options[dropdown.selectedIndex].text;
+      gaSendEvent('dropdown', 'occupation', chosenOccupation);
     });
   }
 

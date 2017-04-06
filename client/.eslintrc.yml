@@ -7,3 +7,5 @@ rules:
     - extensions:
       - .js
       - .jsx
+globals:
+  ga: true
