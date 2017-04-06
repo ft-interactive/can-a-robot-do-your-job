@@ -11,20 +11,30 @@ class Activities extends Component {
       selectedActivities: {},
       currentPage: 0,
       numPerPage: 8,
+      paginationOnJob: 0,
+      totalPaginationOnPage: 0,
     };
 
-    this.changePage = this.changePage.bind(this);
+    // this.changePage = this.changePage.bind(this);
     this.decreasePage = this.decreasePage.bind(this);
     this.increasePage = this.increasePage.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('resetEvent', () => {
-
       this.setState({
         selectedActivities: {},
         currentPage: 0,
+        totalPaginationOnPage: (this.state.totalPaginationOnPage || 0) + (this.state.paginationOnJob || 0),
+        paginationOnJob: 0,
       });
+    });
+
+    // send events on page unload
+    const unloadEventName = ('onbeforeunload' in window) ? 'beforeunload' : 'unload';
+    window.addEventListener(unloadEventName, () => {
+      const totalPaginationOnPage = (this.state.totalPaginationOnPage || 0) + (this.state.paginationOnJob || 0);
+      gaSendEvent('page-total', 'totalPagination', totalPaginationOnPage);
     });
   }
 
@@ -59,11 +69,11 @@ class Activities extends Component {
     this.props.updatePersonalActivitiesFunc(this.state.selectedActivities);
   }
 
-  changePage(pageNum) {
-    this.setState({
-      currentPage: parseInt(pageNum.getAttribute('data-pageNum'), 10),
-    });
-  }
+  // changePage(pageNum) {
+  //   this.setState({
+  //     currentPage: parseInt(pageNum.getAttribute('data-pageNum'), 10),
+  //   });
+  // }
 
   decreasePage() {
     gaSendEvent(this.props.chosenJobName, 'pagination-decrease', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
@@ -78,6 +88,7 @@ class Activities extends Component {
 
     this.setState({
       currentPage: this.state.currentPage + 1,
+      paginationOnJob: Math.max(this.state.paginationOnJob, this.state.currentPage + 1),
     });
   }
 

@@ -9,6 +9,8 @@ import ProportionalStackedBarChart from './components/proportional-stacked-bar';
 import Activities from './components/activities';
 import Scorecard from './components/scorecard';
 
+import gaSendEvent from './components/core/ga-analytics';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +27,8 @@ class App extends Component {
       personalizedResults: {},
       jobActivities: {},
       loaded: false,
+      totalActivitiesCheckedOnPage: 0,
+      totalJobsChosenOnPage: 0,
     };
 
     this.setChosenJob = this.setChosenJob.bind(this);
@@ -63,6 +67,13 @@ class App extends Component {
           occupations: d3.csvParse(response.data),
         });
       });
+
+    // send events on page unload
+    const unloadEventName = ('onbeforeunload' in window) ? 'beforeunload' : 'unload';
+    window.addEventListener(unloadEventName, () => {
+      gaSendEvent('page-total', 'totalActivities', this.state.totalActivitiesCheckedOnPage + (this.state.personalizedResults.numJobActivities || 0));
+      gaSendEvent('page-total', 'totalJobsChosen', this.state.totalJobsChosenOnPage);
+    });
   }
 
   getActivityResultNumbers(jobActivities) {
@@ -110,6 +121,7 @@ class App extends Component {
       exampleJobsList,
       jobsResults,
       jobActivities,
+      totalJobsChosenOnPage: this.state.totalJobsChosenOnPage + 1,
     });
   }
 
@@ -124,6 +136,7 @@ class App extends Component {
       jobsResults: {},
       jobActivities: {},
       personalizedResults: {},
+      totalActivitiesCheckedOnPage: (this.state.totalActivitiesCheckedOnPage || 0) + (this.state.personalizedResults.numJobActivities || 0),
     });
   }
 
