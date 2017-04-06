@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import gaSendEvent from '../core/ga-analytics';
 
 class Activities extends Component {
   constructor(props) {
@@ -63,12 +64,16 @@ class Activities extends Component {
   }
 
   decreasePage() {
+    gaSendEvent('pagination', 'decrease', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
+
     this.setState({
       currentPage: this.state.currentPage - 1,
     });
   }
 
   increasePage() {
+    gaSendEvent('pagination', 'increase', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
+
     this.setState({
       currentPage: this.state.currentPage + 1,
     });
