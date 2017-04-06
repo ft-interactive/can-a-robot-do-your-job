@@ -92,6 +92,10 @@
       display: inline-block;
     }
 
+    a {
+      border: 0;
+    }
+
     .o-buttons.o-buttons--standout {
       background-color:#1da1f2;
       border:none;
@@ -100,6 +104,12 @@
       width: 70px;
       border-radius: 3px;
       font-weight: 500px;
+    }
+
+    .o-buttons--standout:not([disabled]):focus:not(:hover), .o-hoverable-on .o-buttons--standout:not([disabled]):hover {
+      color: #1da1f2;
+      background-color: transparent !important;
+      border: 3px solid #1da1f2 !important;
     }
   }
 
