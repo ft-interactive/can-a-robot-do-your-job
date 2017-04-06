@@ -160,6 +160,13 @@ $share-button-size: 38px;
   top: -190px;
 }
 
+#divider {
+  text-align: center;
+  margin: 2em 0 1em 0;
+  font-size: 1.5em;
+  color: getColor('grey-tint3');
+}
+
 #example-jobs {
   width: 100%;
   box-sizing: border-box;
