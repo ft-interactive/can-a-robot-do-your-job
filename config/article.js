@@ -40,6 +40,7 @@ export default () => ({ // eslint-disable-line
     { name: 'Robin Kwong', url: 'https://www.ft.com/stream/authorsId/Q0ItZGIwM2YzMg==-QXV0aG9ycw==' },
     { name: 'Joanna S Kao', url: 'https://www.ft.com/stream/authorsId/NWRlMDQ0Y2MtODA3Mi00N2VlLWEyZGItNWRmYTZhNDNiNWNi-QXV0aG9ycw==' },
     { name: 'Claire Manibog', url: 'https://www.ft.com/stream/authorsId/ZGVhNjk2NmEtN2ZkNy00NDllLTkyODAtYjE2NWNmNjg0NTcx-QXV0aG9ycw==' },
+    { name: 'Toyoki Nakanishi', url: '' },
   ],
 
   // Appears in the HTML <title>
