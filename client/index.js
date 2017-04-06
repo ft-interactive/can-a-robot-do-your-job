@@ -144,7 +144,7 @@ class App extends Component {
         label: this.state.chosenJobName || 'Your occupation',
         data: this.state.jobsResults },
       { key: 'personalizedResults',
-        label: 'Activities you do',
+        label: 'Your result',
         data: this.state.personalizedResults },
     ];
 
