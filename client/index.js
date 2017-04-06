@@ -160,7 +160,7 @@ class App extends Component {
   }
 
   updatePersonalActivities(selectedActivities) {
-    console.log('selected activities', selectedActivities);
+    // console.log('selected activities', selectedActivities);
 
     this.setState({
       personalizedResults: this.getActivityResultNumbers(selectedActivities),
