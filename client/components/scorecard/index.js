@@ -70,7 +70,7 @@ class Scorecard extends Component {
     const tweetURL = `https://twitter.com/home?status=${tweetText}`;
 
     const scorecardShare = (<div id="scorecard__share">
-      <div id="scorecard__share-label">Share your score</div>
+      <div id="scorecard__share-label">Share your score:</div>
       <a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet</button></a>
     </div>);
 
