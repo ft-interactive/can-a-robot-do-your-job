@@ -90,6 +90,16 @@
       color: getColor('grey-tint3');
       display: inline-block;
     }
+
+    .o-buttons.o-buttons--standout {
+      background-color:#1da1f2;
+      border:none;
+      font-size: 20px;
+      height: 36px;
+      width: 70px;
+      border-radius: 3px;
+      font-weight: 500px;
+    }
   }
 
 }
