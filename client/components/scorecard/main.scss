@@ -74,6 +74,7 @@
         font-size: 1em;
         width: 100%;
         max-width: 200px;
+        line-height: 1.2em;
 
         #scorecard__verdict-label {
           font-weight: 600;
@@ -89,6 +90,29 @@
       font-size: 1.3em;
       color: getColor('grey-tint3');
       display: inline-block;
+    }
+
+    a {
+      border: 0;
+    }
+
+    .o-buttons.o-buttons--standout {
+      background-color:#1da1f2;
+      border:none;
+      font-size: 20px;
+      height: 36px;
+      border-radius: 3px;
+      font-weight: 500px;
+    }
+
+    .o-buttons--standout:not([disabled]):focus:not(:hover), .o-hoverable-on .o-buttons--standout:not([disabled]):hover {
+      color: #1da1f2;
+      background-color: transparent !important;
+      border: 3px solid #1da1f2 !important;
+      -moz-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
     }
   }
 
