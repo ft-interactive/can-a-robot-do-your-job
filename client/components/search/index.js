@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import * as d3 from 'd3';
+import gaSendEvent from '../core/ga-analytics';
 
 class Search extends Component {
   constructor(props) {
@@ -38,6 +37,9 @@ class Search extends Component {
 
         document.querySelector(`#dropdownIndustry option[value="${majorGroupId}"]`).selected = true;
         document.querySelector(`#dropdownOccupation option[value="${minorCategoryId}"]`).selected = true;
+
+        const buttonText = element.textContent || element.innerText;
+        gaSendEvent('exampleButton', 'click', buttonText);
       });
     });
   }
