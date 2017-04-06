@@ -9,9 +9,9 @@ class Scorecard extends Component {
   }
 
   tweetScore() {
-    const eventAction = this.props.chosenJobName;
+    const eventCategory = this.props.chosenJobName;
     const eventLabel = `${this.props.score.yes || 0}-${this.props.score.numJobActivities || 0}`;
-    gaSendEvent('dynamicShare', eventAction, eventLabel);
+    gaSendEvent(eventCategory, 'dynamicShare', eventLabel);
   }
 
   render() {

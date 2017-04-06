@@ -49,9 +49,11 @@ class Activities extends Component {
     if (checkBoxObj.checked) {
       // add to selectedActivities
       this.state.selectedActivities[checkBoxObj.value] = this.props.activities[checkBoxObj.value];
+      gaSendEvent(this.props.chosenJobName, 'checkbox-checked', checkBoxObj.value);
     } else {
       // remove from selectedActivities
       delete this.state.selectedActivities[checkBoxObj.value];
+      gaSendEvent(this.props.chosenJobName, 'checkbox-unchecked', checkBoxObj.value);
     }
 
     this.props.updatePersonalActivitiesFunc(this.state.selectedActivities);
@@ -64,7 +66,7 @@ class Activities extends Component {
   }
 
   decreasePage() {
-    gaSendEvent('pagination', 'decrease', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
+    gaSendEvent(this.props.chosenJobName, 'pagination-decrease', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
 
     this.setState({
       currentPage: this.state.currentPage - 1,
@@ -72,7 +74,7 @@ class Activities extends Component {
   }
 
   increasePage() {
-    gaSendEvent('pagination', 'increase', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
+    gaSendEvent(this.props.chosenJobName, 'pagination-increase', `${this.state.currentPage + 1}-${Math.ceil(this.state.transformedActivities.length / this.state.numPerPage)}`);
 
     this.setState({
       currentPage: this.state.currentPage + 1,
@@ -116,6 +118,7 @@ Activities.propTypes = {
   activities: React.PropTypes.object,
   updatePersonalActivitiesFunc: React.PropTypes.func,
   chosenJobId: React.PropTypes.string,
+  chosenJobName: React.PropTypes.string,
 };
 
 export default Activities;

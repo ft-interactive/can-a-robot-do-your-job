@@ -183,7 +183,7 @@ class App extends Component {
         <Search industries={this.state.industries} occupations={this.state.occupations} setChosenJobFunc={this.setChosenJob} clearOutChosenJobFunc={this.clearOutChosenJob} />
         {resultOne()}
         {(this.state.chosenJobId ? <ProportionalStackedBarChart data={proportionalBarChartData} /> : null)}
-        <Activities chosenJobId={this.state.chosenJobId} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
+        <Activities chosenJobId={this.state.chosenJobId} chosenJobName={this.state.chosenJobName} activities={this.state.jobActivities} updatePersonalActivitiesFunc={this.updatePersonalActivities} />
         <Scorecard chosenJobName={this.state.chosenJobName} score={this.state.personalizedResults}/>
     </div>
     );
