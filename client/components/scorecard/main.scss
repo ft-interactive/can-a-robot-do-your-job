@@ -17,6 +17,7 @@
   padding-bottom: 0;
   border: 1px solid #e9decf;
   background: #fbf9f7;
+  text-align: center;
 
   #scorecard__contents {
     margin: 0 auto;
@@ -49,14 +50,16 @@
       display: inline-block;
       vertical-align: top;
       margin-left: 30px;
+      text-align: left;
 
       @include oGridRespondTo($until: S) {
-        margin-left: 44px;
+        margin-left: 0;
       }
 
       #scorecard__stats {
         font-size: 3em;
         font-weight: 200;
+        margin-bottom: 20px;
       }
 
       #scorecard__line2 {
@@ -80,9 +83,6 @@
   }
 
   #scorecard__share {
-    @include oGridRespondTo($until: S) {
-      margin-left: 44px;
-    }
 
     #scorecard__share-label {
       margin: 1em 10px 1em 0;
