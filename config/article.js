@@ -9,7 +9,7 @@ export default () => ({ // eslint-disable-line
 
   // To set an exact publish date do this:
   //       new Date('2016-05-17T17:11:22Z')
-  publishedDate: new Date(),
+  publishedDate: new Date('2017-04-07T05:00:00Z'),
 
   headline: 'Can a robot do your job?',
 
@@ -18,7 +18,7 @@ export default () => ({ // eslint-disable-line
 
   topic: {
     name: 'Artificial Intelligence and Robotics',
-    url: '/foo',
+    url: 'https://www.ft.com/stream/topicsId/ZTBiZDJjNjktZmM5OS00ZjMyLWE3MDgtNmMyZTRlOGQ3NjFj-VG9waWNz',
   },
 
   relatedArticle: {
