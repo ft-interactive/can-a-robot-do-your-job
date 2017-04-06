@@ -42,6 +42,18 @@ class Search extends Component {
         gaSendEvent('exampleButton', 'click', buttonText);
       });
     });
+
+    document.querySelector('#dropdownIndustry').addEventListener('change', () => {
+      const dropdown = document.querySelector('#dropdownIndustry');
+      const chosenIndustry = dropdown.options[dropdown.selectedIndex].text;
+      gaSendEvent('dropdown', 'category', chosenIndustry);
+    });
+
+    document.querySelector('#dropdownOccupation').addEventListener('change', () => {
+      const dropdown = document.querySelector('#dropdownOccupation');
+      const chosenOccupation = dropdown.options[dropdown.selectedIndex].text;
+      gaSendEvent('dropdown', 'occupation', chosenOccupation);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
