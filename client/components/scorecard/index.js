@@ -70,7 +70,7 @@ class Scorecard extends Component {
     const tweetURL = `https://twitter.com/home?status=${tweetText}`;
 
     const scorecardShare = (<div id="scorecard__share">
-      <div id="scorecard__share-label"><a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet</button></a> your score:</div>
+      <div id="scorecard__share-label"><a href={tweetURL} target="_blank" rel="noreferrer noopener"><button className="o-buttons o-buttons--standout">Tweet your score</button></a></div>
     </div>);
 
     const scorecardContainer = (<div id="scorecard-container" aria-disabled={(this.props.chosenJobName ? 'false' : 'true')}>

@@ -101,7 +101,6 @@
       border:none;
       font-size: 20px;
       height: 36px;
-      width: 70px;
       border-radius: 3px;
       font-weight: 500px;
     }
@@ -110,6 +109,10 @@
       color: #1da1f2;
       background-color: transparent !important;
       border: 3px solid #1da1f2 !important;
+      -moz-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      transition: all .2s ease;
     }
   }
 
