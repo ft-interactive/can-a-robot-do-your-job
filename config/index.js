@@ -12,6 +12,8 @@ export default async () => {
     return data.storytext;
   });
 
+  console.log(text);
+
   return {
     ...d,
     flags,
