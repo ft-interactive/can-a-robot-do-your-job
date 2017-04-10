@@ -79,7 +79,7 @@ class Scorecard extends Component {
       </div>
     </div>);
 
-    const tweetText = `${yesVal} out of ${numJobActivitiesVal} of my work activities could be automated. Find out robot-proof your job is: https://ig.ft.com/can-a-robot-do-your-job/`;
+    const tweetText = `${yesVal} out of ${numJobActivitiesVal} of my work activities could be automated. Find out how robot-proof your job is: https://ig.ft.com/can-a-robot-do-your-job/`;
     const tweetURL = `https://twitter.com/home?status=${tweetText}`;
 
     const scorecardShare = (<div id="scorecard__share">
